@@ -1,0 +1,57 @@
+\documentclass[fleqn]{article}
+\setlength{\mathindent}{3pt}
+\usepackage{bbold}
+\usepackage{hyperref}
+\usepackage[overload]{empheq}
+\input{structure.tex}
+
+
+\begin{document}
+The renormalization group equation for the metric has been given:
+\begin{align}
+g_{ab} ^{\mu} = g_{ab} ^{\Lambda} + \frac{\epsilon}{8\pi^{2}} \lbrace \text{Tr} (\text{Hess}(V) R_{acbd}) - \Lambda ^{2} R_{ab}) \rbrace 
+\end{align}
+Since
+\begin{align}
+\text{Tr} (\text{Hess}(V) R_{acbd}) &= \frac{1}{k} 
+\begin{bmatrix}
+-M_{2} & m \\
+m & -M_{1}
+\end{bmatrix} \\
+R_{ab} &= - \frac{1}{\varphi_{2} ^{2}} \mathbb{1}
+\end{align}
+the metric at a scale $\mu$ can be written:
+\begin{align}
+\tilde g_{ab} := g_{ab}^{\mu} = 
+\begin{bmatrix}
+\frac{k}{\varphi _{2} ^{2}}  - \frac{\epsilon}{8\pi^{2}} \lbrace \frac{M_{2}}{k} - (\frac{\Lambda}{\varphi_{2}})^2 \rbrace & \frac{\epsilon}{8\pi^{2}}\frac{m}{k} \\
+\frac{\epsilon}{8\pi^{2}}\frac{m}{k} & \frac{k}{\varphi _{2} ^{2}} - \frac{\epsilon}{8\pi^{2}} \lbrace \frac{M_{1}}{k} - (\frac{\Lambda}{\varphi_{2}})^2 \rbrace 
+\end{bmatrix}
+\end{align}
+Then inverse metric is:
+\begin{align}
+\tilde g ^{ab} = 
+\begin{bmatrix}
+\frac{\varphi_{2}^{2}}{k} + \frac{\epsilon}{8\pi^{2}}(\frac{\varphi_{2}^{2}}{k})^{2}(\frac{M_{2}}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}) & -\frac{\epsilon}{8\pi^{2}}\frac{m}{k}(\frac{\varphi_{2} ^{2}}{k})^{2} \\
+-\frac{\epsilon}{8\pi^{2}}\frac{m}{k}(\frac{\varphi_{2} ^{2}}{k})^{2} & \frac{\varphi_{2}^{2}}{k} + \frac{\epsilon}{8\pi^{2}}(\frac{\varphi_{2}^{2}}{k})^{2}(\frac{M_{1}}{k} - (\frac{\Lambda}{\varphi_{2}})^{2})
+\end{bmatrix}
+\end{align}
+and one may compute:
+\begin{align}
+\tilde \Gamma _{11}^{1} &= -\frac{\epsilon}{8\pi^{2}}\frac{m}{k^2} \varphi_{2} \\
+\tilde \Gamma _{12}^{1} &= -\frac{1}{\varphi_{2}} - \frac{\epsilon}{8\pi^{2}} \frac{M_{2}}{k^{2}}\varphi_{2}  \\
+\tilde \Gamma _{22}^{1} &= \frac{\epsilon}{8\pi^{2}} \frac{m}{k^{2}}\varphi_{2} \\
+\tilde \Gamma _{11}^{2} &= \frac{1}{\varphi_{2}} + \frac{\epsilon}{8\pi^{2}}\frac{M_{1}}{k^{2}}\varphi_{2} \\
+\tilde \Gamma _{12} ^{2} &= \frac{\epsilon}{8\pi^2} \frac{m}{k^{2}}\varphi_{2} \\
+\tilde \Gamma _{22}^{2} &= -\frac{1}{\varphi_{2}} - \frac{\epsilon}{8\pi^{2}}\frac{M_{1}}{k^{2}} \varphi_{2}
+\end{align}
+Therefore, the new geodesic equations are:
+\begin{align}[left=\empheqlbrace]
+\label{eq:1}
+\ddot  \varphi_{1} - \frac{2}{ \varphi_{2}}  \dot \varphi_{1} \dot \varphi_{2} & = \frac{\epsilon}{8\pi^{2}}\frac{\varphi_{2}}{k^{2}} (m\dot \varphi_{1} ^{2} + 2M_{2} \dot \varphi_{1} \dot \varphi_{2} - m \dot \varphi_{2}^{2}) \\
+\label{eq:2}
+\ddot \varphi_{2} + \frac{1}{\varphi_{2}} (\dot \varphi_{1} ^{2} - \dot \varphi_{2} ^{2}) & = \frac{\epsilon}{8\pi^{2}} \frac{\varphi_{2}}{k^{2}} (-M_{1} \dot \varphi_{1} ^{2} - 2m \dot \varphi_{1} \dot \varphi_{2} + M_{1} \dot \varphi_{2} ^{2})
+\end{align}
+Again, from (\ref{eq:1}), it can be seen that the vertical lines are no longer the geodesics, and there need some correction terms if $m \neq 0$. Restricting corrected geodesics with the initial conditions that the initial values and initial derivatives are equal to the ones for uncorrected geodesics, which is written as $(\varphi _{1}, \varphi_{2}) = (\varphi_{1} ^{0}, \varphi_{2} ^{0} e^{\pm \frac{s}{\sqrt{k}}})$, find the new geodesics.
+
+\end{document}
