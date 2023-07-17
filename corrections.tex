@@ -2,6 +2,7 @@
 \setlength{\mathindent}{3pt}
 \usepackage{bbold}
 \usepackage{hyperref}
+\usepackage{physics}
 \usepackage[overload]{empheq}
 \input{structure.tex}
 
@@ -53,5 +54,23 @@ Therefore, the new geodesic equations are:
 \ddot \varphi_{2} + \frac{1}{\varphi_{2}} (\dot \varphi_{1} ^{2} - \dot \varphi_{2} ^{2}) & = \frac{\epsilon}{8\pi^{2}} \frac{\varphi_{2}}{k^{2}} (-M_{1} \dot \varphi_{1} ^{2} - 2m \dot \varphi_{1} \dot \varphi_{2} + M_{1} \dot \varphi_{2} ^{2})
 \end{align}
 Again, from (\ref{eq:1}), it can be seen that the vertical lines are no longer the geodesics, and there need some correction terms if $m \neq 0$. Restricting corrected geodesics with the initial conditions that the initial values and initial derivatives are equal to the ones for uncorrected geodesics, which is written as $(\varphi _{1}, \varphi_{2}) = (\varphi_{1} ^{0}, \varphi_{2} ^{0} e^{\pm \frac{s}{\sqrt{k}}})$, find the new geodesics.
+What I did tried was as following: First, as I did, pluged the original solution $\varphi_{2}= \varphi_2^{0} e^{\pm \frac{s}{\sqrt{k}}}$ into eq. (\ref{eq:2}) and solved for $\varphi_{1}$. This ended up with:
+\begin{align}
+    \varphi_{1} = \varphi_{1}^{0} - \frac{\epsilon}{24\pi^2}\frac{m}{k}(\varphi_{2}^{3}  - (\varphi_{2} ^{0}) ^{3})
+\end{align}
+And then from this, plug $\dot \varphi_{1} = -\frac{\epsilon}{8\pi^2}\frac{m}{k} \varphi_{2}^{2} \dot \varphi_{2}$ into eq.(\ref{eq:1}) back to back.This gives:
+\begin{align}
+    &\varphi_{2}\lbrace -\frac{\epsilon}{8\pi^{2}}\frac{m}{k}(2\varphi_{2}\dot \varphi_{2}^{2} + \varphi_{2}^{2}\ddot \varphi_{2}) \rbrace + 2 \frac{\epsilon}{8\pi^{2}}\frac{m}{k}\varphi_{2} ^{2} \dot \varphi_{2} ^{2} = \frac{\epsilon}{8\pi^2}
+    \frac{\varphi_{2}^{2}}{k^2}\lbrace 2M_{2} (-\frac{\epsilon}{8\pi^{2}}\frac{m}{k})\varphi_{2}^{2} \dot \varphi_{2} ^{2} - m \dot \varphi_{2} ^{2} \rbrace \nonumber \\
+    \Rightarrow & \varphi_{2} \ddot \varphi_{2} = \frac{1}{k} (\dot \varphi_{2}^{2} + \frac{\epsilon}{8\pi^2} \frac{2M_{2}}{k^2} \varphi_{2}^{2} \dot \varphi_{2} ^{2})
+\end{align}
+However, by solving this differential equation, I stucked with:
+\begin{align}
+    \int \exp (-\frac{\ln \varphi_{2}}{k} - \frac{\epsilon}{8\pi^{2}}\frac{M_{2}}{k^3}\varphi_{2}^{2} ) \dd\varphi_{2} = \int C \dd s 
+\end{align}
+here C is a constant which can be determined with initial conditions. \\
+\indent So I tried another way. Instead of $\varphi_{2} = \varphi_{2} ^{0} e^{\pm \frac{s}{\sqrt{k}}}$, plugging $\varphi_{2} = \varphi_{2} ^{0} e^{\pm \frac{s}{\sqrt{k}}} + \epsilon\delta \varphi_{2}$ with the constraints stated above into eq. (\ref{eq:2}),
+then solve for $\varphi_{1}$, but it didn't work well too. \\
+\indent I had been suspicious if I did my calculation correctly and so checked from the beginning, but it seemed fine to me. So I suppose I have had mistakes and/or misunderstandings with computations of geodesic equations with corrections. 
 
 \end{document}
