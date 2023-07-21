@@ -1,0 +1,79 @@
+\documentclass[fleqn]{article}
+\setlength{\mathindent}{3pt}
+\usepackage{bbold}
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage[overload]{empheq}
+\input{structure.tex}
+
+\begin{document}
+With perturbed metric, geodesic equations are:
+\begin{align}[left=\empheqlbrace]
+    \label{eq:1}
+    \varphi_2 \ddot \varphi_1 - 2 \dot \varphi_1 \dot \varphi_{2} &= \frac{\epsilon}{8\pi^2} \frac{\varphi_{2}^{2}}{k^{2}} (m\dot \varphi_{1}^2 + 2M_{2} \dot \varphi_{1} \dot \varphi_{2} -m\dot \varphi_{2}^{2}) \\
+    \label{eq:2}
+    \varphi _{2} \ddot \varphi _{2} + \dot \varphi_{1}^{2} - \dot \varphi _{2} ^{2} &= \frac{\epsilon}{8\pi^{2}}\frac{\varphi_{2}^{2}}{k^{2}} (-M_{1} \dot \varphi_{1}^{2} -2m\dot \varphi _{1} \dot \varphi _{2} + M_{1} \dot \varphi _{2}^{2})
+\end{align}
+Now let us have an ansatz such that the solutions for those equations $(\varphi_{1}, \varphi_{2})$ are in the forms of $(\tilde \varphi_{1} + \epsilon f(s),\tilde \varphi_{2} + \epsilon g(s))$, where tildes stand for the unperturbed solutions, with the constraints $\eval{(\varphi_{1},\varphi_{2})} _{s=0} = (\tilde \varphi _{1} , \tilde \varphi_{2})$ and $\eval{(\dot \varphi_{1}, \dot \varphi_{2})}_{s=0} = (\dot {\tilde {\varphi_{1}}}, \dot {\tilde {\varphi _{2}}})$. Knowing $\tilde \varphi_{1} = \varphi_{1} ^{0} =$ constant, and $\tilde \varphi_{2} = \varphi_{2}^{0} e^{\frac{s}{\sqrt{k}}}$, \ref{eq:1} leads:
+\begin{align}
+    \begin{split}
+    &(\tilde \varphi_{2} + \epsilon g(s))(\ddot {\tilde {\varphi_{1}}} + \epsilon \ddot f(s)) - 2 (\dot {\tilde{\varphi_{1}}} + \epsilon \dot {f}(s))(\dot {\tilde{\varphi_{2}}} +\epsilon \dot{g}(s)) \\
+    &= \frac{\epsilon}{8\pi^{2}}\frac{1}{k^2} (\tilde{\varphi_{2}} + \epsilon g(s))^{2}\lbrace m(\dot{\tilde{\varphi_{2}}} + \epsilon \dot{f}(s))^{2} +2M_{2} (\dot{\tilde{\varphi_{1}}} + \epsilon \dot{f}(s))(\dot{\tilde{\varphi_{2}}} + \epsilon \dot{g}(s)) - m (\dot{\tilde{\varphi_{2}}} + \epsilon \dot{g}(s))^{2} \rbrace
+    \end{split} \\
+    \Rightarrow 
+    \begin{split}
+        &\tilde{\varphi_{2}}\ddot{\tilde{\varphi_{1}}}-2\dot{\tilde{\varphi_{1}}}\dot{\tilde{\varphi_{2}}} + \epsilon\lbrace \tilde{\varphi_{2}}\ddot{f}(s) + \ddot{\tilde{\varphi_{1}}}g(s) - 2(\dot{\tilde{\varphi_{1}}}\dot{g}(s) + \dot{\tilde{\varphi_{2}}}\dot{f}(s)) \rbrace  + \mathcal{O}(\epsilon ^{2})\\
+        &= \frac{\epsilon}{8\pi^{2}}\frac{1}{k^{2}} \tilde{\varphi _{2}} ^{2} (m\dot{\tilde{\varphi_{2}}} ^{2} + 2M_{2} \dot{\tilde{\varphi_{1}}}\dot{\tilde{\varphi_{2}}} -m \dot{\tilde{\varphi_{2}}}^{2}) + \mathcal{O}(\epsilon^{2})
+    \end{split} \\
+    &\Rightarrow \ddot{f}(s) - \frac{2}{\sqrt{k}}\dot{f}(s) + \frac{1}{8\pi^{2}}\frac{m}{k^{3}} \tilde{\varphi_{2}}^{3} = 0
+\end{align}
+Solution to the homogeneous equation is;
+\begin{align}
+    f_{h} (s) = C_{1} + C_{2} e^{2s/\sqrt{k}} 
+\end{align}
+and let $f_{p}(s) = A e^{3s/\sqrt{k}}$ be the particular solution, then since $\ddot{f}_{p} (s) = \frac{9}{k}A e^{3s /\sqrt{k}}$, $\dot{f}_{p} (s) = \frac{3}{\sqrt{k}}$, $A = -\frac{k}{3} \frac{1}{8\pi^{2}}\frac{m}{k^{3}} (\varphi_{2}^{0})^{3}$. Therefore:
+\begin{align}
+    f(s) &= f_{h}(s) + f_{p}(s) \nonumber \\
+    &= C_{1} + C_{2} e^{2s/\sqrt{k}} - \frac{k}{3}\frac{1}{8\pi^{2}}\frac{m}{k^{3}}(\varphi_{2}^{0})^{3} e^{3s/\sqrt{k}}
+\end{align}
+According to the initial conditions:
+\begin{align}
+    f(0) &= C_{1} + C_{2} - \frac{1}{3}\frac{m}{8\pi^{2}k^{2}}(\varphi_{2}^{0})^{3} \\
+    \dot{f}(0) &= \frac{2}{\sqrt{k}}C_{2} -  \frac{1}{8\pi^{2}}\frac{m}{k^{2}\sqrt{k}}(\varphi_{2}^{0})^{3}
+\end{align}
+Eventually, the correction for $\varphi_{1}$ is:
+\begin{align}
+    f(s) = -\frac{1}{8\pi^{2}}\frac{m}{6k^{2}}(\varphi_{2}^{0})^{3}(1-3e^{\frac{2s}{\sqrt{k}}} + 2e^{\frac{3s}{\sqrt{k}}})
+\end{align}
+Also, for \ref{eq:2}:
+\begin{align}
+    &\tilde{\varphi_{2}}\ddot{\tilde{\varphi_{2}}} -\dot{\tilde{\varphi_{2}}}^{2} + \epsilon(\varphi_{2}\ddot{g}(s) + \ddot{\tilde{\varphi_{2}}} g(s) - 2\dot{\tilde{\varphi_{2}}}\dot{g}(s)) = \frac{\epsilon}{8\pi^{2}}\frac{M_1}{k^2} \tilde{\varphi_{2}}^2 \dot{\tilde{\varphi_{2}}}^2 \\
+    \Rightarrow & \ddot{g}(s) - \frac{2}{\sqrt{k}} \dot{g}(s) +\frac{1}{k}g(s) - \frac{1}{8\pi^{2}}\frac{M_{1}}{k^3} (\varphi_{2}^{0})^{3} e^{\frac{3s}{\sqrt{k}} }= 0
+\end{align}
+Similarly to $f(s)$:
+\begin{align}
+    g(s) = \frac{1}{8\pi^{2}} \frac{M_{1}}{4k^{5/2}}(\varphi_{2}^{0})^{3}e^{s/\sqrt{k}} (-\sqrt{k} - 2s +\sqrt{k} e^{2s/\sqrt{k}})
+\end{align}
+Thus, corrected geodesics, up to $\mathcal{O}(\epsilon)$, are:
+\begin{align}[left=\empheqlbrace]
+    \varphi_{1} &= \varphi_{1}^{0} - \frac{\epsilon}{8\pi^2} \frac{m}{6k^{2}} (\varphi_{2}^{0})^{3} (1-3e^{\frac{2s}{\sqrt{k}}} + 2e^{\frac{3s}{\sqrt{k}}}) \\
+    \varphi_{2} &= \varphi_{2}^{0} e^{\frac{s}{\sqrt{k}}} + \frac{\epsilon}{8\pi^{2}}\frac{M_{1}}{4k^{5/2}} (\varphi_{2}^{0})^{3} e^{\frac{s}{\sqrt{k}}} (-\sqrt{k} - 2s + \sqrt{k} e^{\frac{2s}{\sqrt{k}}})
+\end{align}
+Hence:
+\begin{align}
+    \dv{\varphi_{1}}{\varphi_{2}} &= \dv{\varphi_{1}}{\tilde{\varphi_{2}}}\dv{\tilde{\varphi_{2}}}{\varphi_{2}} \nonumber \\
+    &= -\frac{\epsilon}{8\pi^{2}}\frac{m}{6k^{2}} (-6\varphi_{2}^{0} \tilde{\varphi_{2}} + 6 \tilde{\varphi_{2}}^{2})(1+\frac{\epsilon}{8\pi^{2}} \frac{M_{1}}{4k^{5/2}} (-\sqrt{k}(\varphi_{2}^{0} )^{2} - 2s(\varphi_{2}^{0}) ^{2} + 3\sqrt{k} \tilde{\varphi_{2}}^{2}))^{-1} \nonumber \\
+    &= -\frac{\epsilon}{8\pi^{2}}\frac{m}{k^{2}} (\tilde{\varphi_{2}} - \varphi_{2}^{0})\tilde{\varphi_{2}} + \mathcal{O}(\epsilon ^{2})
+\end{align}
+With this aid, the distance between two points on the corrected geodesic is computated:
+\begin{align}
+    s &= \int ds = \int \sqrt{g_{ij}\dd \varphi_{i} \dd \varphi_{j}} \nonumber \\
+    &= \int \sqrt{[\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_2}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace ]\dd \varphi_{1}^{2} + \frac{\epsilon}{4\pi^{2}} \frac{m}{k}\dd \varphi_{1} \dd \varphi_{2} +[\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_1}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace ] \dd \varphi_{2}^{2} } \nonumber \\
+    & = \int [[\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_2}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace] \lbrace -\frac{\epsilon}{8\pi^{2}} \frac{m}{k^{2}} \tilde{\varphi_{2}}(\tilde{\varphi_{2}} -\varphi_{2}^{0}) \rbrace ^{2} + \frac{\epsilon}{4\pi^{2}}\frac{m}{k}\lbrace -\frac{\epsilon}{8\pi^{2}} \frac{m}{k^{2}} \tilde{\varphi_{2}}(\tilde{\varphi_{2}} -\varphi_{2}^{0}) \rbrace \nonumber \\
+    & + [\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_1}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace]]^{1/2} \dd {\varphi_{2}} \nonumber \\
+    &\sim \int \frac{\sqrt{k}}{\varphi_{2}} [1- \frac{\epsilon}{16\pi^{2}} \frac{\varphi_{2}^{2}}{k} \lbrace\frac{M_{1}}{k} - (\frac{\Lambda}{\varphi_{2}})^{2} \rbrace ] + \order*{\epsilon^{2}} \dd{\varphi_{2}} \\
+    &= \sqrt{k} \ln\abs*{\frac{\varphi_{2}}{\varphi_{2}^{0}}} - \frac{\epsilon}{16\pi^{2}}\lbrace \frac{M_{1}}{2k\sqrt{k}}(\varphi_{2}^{2} - (\varphi_{2}^{0})^{2}) - \frac{\Lambda^{2}}{\sqrt{k}}\ln\abs*{\frac{\varphi_{2}}{\varphi_{2}^{0}}} \rbrace + \order*{\epsilon ^{2}}
+\end{align}
+Apparently in the limit $\epsilon \to 0$, $\varphi_{2} \to \tilde{\varphi_{2}}$ and therefore the distance of the original geodesic is recovered.
+
+\end{document}
