@@ -1,0 +1,429 @@
+\chapter{Renormalization Group}
+\label{Chapter2}
+Since it is central for this thesis to see how the renormalization group (RG) affects on the SDC, it is worth to devote this chapter to a methodology adopted to investigate beta functions, geodesics, and distances. There are some ways to compute RG flows, but here the Heat Kernel expansion method will be used. Therefore, to begin with, a brief introduction to the Heat Kernel expansion for RG will be presented. Then, two examples, one is known from other methods and another is more relevant for our purpose, shows how it works more concretely. The following discussion and results are based on %\ref .
+\section{Heat Kernel Expansion} 
+\subsection{Effective Action}
+It is necessary to find a one-loop effective action to begin with. Consider the generating functional for the Green functions of a field $\phi$ in the path integral representation: 
+\begin{align}
+    Z[J] &= \int \mathcal{D} \phi \text{exp} \qty (-\int d^{d} x (\mathcal{L} [\phi(x)] + J(x)\phi(x))) \\
+    & = \int \mathcal{D} \phi \text{exp} \qty(-S[\phi] -\int d^{d} x J(x) \phi (x) ) \nonumber 
+\end{align}
+where $J(x)$ is an external source. Suppose then that a field $\phi(x)$ can be splitted into two pieces: a classical background $\varphi (x)$ and a quantum fluctuations $\eta (x)$ such as
+\begin{align}
+    \phi(x) = \varphi (x) + \eta (x)
+\end{align} 
+so that $\eval{\fdv{S}{\phi}} _{\phi = \varphi} + J(x) = 0$ is satisfied. Then expansion of the action around the background gives:
+\begin{align}
+    \label{eq:2.3}
+    \begin{split}
+    \int d^{d} x  (\mathcal{L}[\phi(x)] + J(x) \phi(x) ) = & \int d^{d}x  (\mathcal{L}[\varphi(x)] + J(x)\varphi(x))  \\
+    + & \int d^{d} x (\eval{\fdv{\mathcal{L}}{\phi}} _{\phi = \eta} + J(x)) \eta(x) \\
+    + & \frac{1}{2} \int d^{d}x d^{d}y \eval {\frac{\delta ^{2} \mathcal{L}}{\delta \phi(x) \delta \phi(y)}} _{\phi = \varphi} \eta(x)\eta(y) \cdots 
+    \end{split}
+\end{align}
+The second term of eq.\ref{eq:2.3} is identically zero due to the equation of motion. Then the generating functional can be in the form:
+\begin{align}
+    Z[J] = e^ {\qty (-\int d^{d}x (\mathcal {L} [\varphi (x)] + J(x) \varphi (x)))} \int \mathcal {D} \eta e^{- \frac{1}{2} \int d^{d}x d^{d}y \eval {\frac{\delta ^{2} \mathcal{L}}{\delta \phi(x) \delta \phi(y)}} _{\phi = \varphi} \eta(x)\eta(y) \cdots}
+\end{align}
+because the first integral in eq.\ref{eq:2.3} has nothing to do with the  fluctuation $\eta(x)$. Notice that the remaining path integral over $\eta$ is of Gaussian form and can be computed explicitly:
+\begin{align}
+    Z[J] = e^ {\qty (-\int d^{d}x (\mathcal {L} [\varphi (x)] + J(x) \varphi (x)))} \qty (\text{det} \frac{\delta ^{2} \mathcal{L}}{\delta \phi(x) \delta \phi(y)})^{-1/2} + \cdots
+\end{align}
+A generating functional $Z[J]$ takes the form $Z[J] = e^{-W[J]}$, then, with an identity $\text{det} \mathcal{A} = e^{\text{Tr} \ln \mathcal{A}}$:
+\begin{align}
+    W[J] = \int d^{d}x (\mathcal {L} [\varphi (x)] + J(x) \varphi (x)) + \frac{1}{2} \text{Tr} \ln \frac{\delta ^{2} \mathcal{L}}{\delta \phi(x) \delta \phi(y)} + \cdots
+\end{align}
+Performing a Legendre transformation in order to compute the effective action $\Gamma[\varphi]$:
+\begin{align}
+    \Gamma[\varphi] &= W[J] - \int d^{d} x J(x)\varphi(x) \nonumber \\
+    & = \int d^{d}x \mathcal{L} [\varphi(x)] + \frac{1}{2} \text{Tr} \qty[\ln \frac{\delta ^{2} \mathcal{L}}{\delta \phi(x) \delta \phi(y)}] + \cdots
+\end{align}
+The first term is apparently the classical action. Thus the one-loop effective action is given:
+\begin{align}
+    \label{eq:2.8}
+    \Gamma_{\text{1-loop}} [\varphi] = \frac{1}{2} \text{Tr} \qty[\ln \frac{\delta ^{2} \mathcal{L}}{\delta \phi(x) \delta \phi(y)}]
+\end{align}
+Therefore, it is inevitable to evaluate this trace in some way in order to understand one-loop correstions to the effective action, and after all the RG flows.
+
+\subsection{Heat Kernel Expansion}
+For the manipulation of the trace, introduce the heat kernel:
+\begin{align}
+    K(t;x,y;D) = \mel{x}{e^{-tD}}{y}
+\end{align}
+such that it satisfies the heat conduction equation:
+\begin{align}
+    (\partial _{t} + D_{x})K(t;x,y;D) = 0
+\end{align}
+with an initial condition:
+\begin{align}
+    K(0;x,y;D) = \delta (x-y)
+\end{align}
+For instance, for a kernel for $ D = - \Delta$:
+\begin{align}
+    K(t;x,y;-\Delta) = (4\pi t)^{-d/2} \text{exp} ^{\qty (-\frac{(x-y)^2}{4t})}
+\end{align}
+and for $D = D_{0}= -\Delta +m^2 $:
+\begin{align}
+    K(t;x,y;D) = (4\pi t)^{-d/2} \text{exp}^{ \qty (-\frac{(x-y)^2}{4t} - tm^2)}
+\end{align}
+For a general D, $K(t;x,y;D_{0})$ still describes the leading singularity at $t \to 0$:
+\begin{align}
+    K(t;x,y;D) = K(t;x,y;D_{0}) (1 + tb_{2} (x,y) + t^{2} b_{4}(x,y) + \cdots)
+\end{align}
+Coefficients $b_{k} (x,y)$ are regular in the limit $y \to x$, and called the heat kernel coefficients. \\
+\indent It is needed to compute the functional:
+\begin{align}
+    \Gamma_{\text{1-loop}} = \frac{1}{2} \Tr \ln D
+\end{align}
+where;
+\begin{align}
+    D = \frac{\delta^2 \mathcal{L}}{\delta \phi \delta \phi} 
+\end{align}
+But for each positive eignevalue $\lambda$ of the operator $D$, an identity is:
+\begin{align}
+    \ln \lambda = -\int _{0} ^{\infty} \frac{dt}{t} e^{-t\lambda}
+\end{align}
+Then eq.\ref{eq:2.8} can be rewritten:
+\begin{align}
+    \Gamma _{\text{1-loop}} = -\frac{1}{2} \int _{0}^{\infty} \frac{dt}{t} K(t,D)
+\end{align}
+where 
+\begin{align}
+    K(t,D) = \Tr e^{-tD} = \int d^{d} x \sqrt{g} K(t;x,x;D)
+\end{align}
+To see a UV divergence, introduce a cut-off at $t=\Lambda ^{-2}$, and compute a part of $\Gamma _{\text{1-loop}}$ which diverges in the limit $\Lambda \to 0$:
+\begin{align}
+    \begin{split}
+    \Gamma _{\text{1-loop}} ^{\text{div}} =&  -(4\pi)^{-d/2} \int d^{d} x \sqrt{g} [ \sum_{2(j+l)< d} \Lambda ^{d-2j-2l} b_{2j}(x,x) \frac{(-m^{2})^{l} l!} {d-2j-2l}  \\
+    &+ \sum_{2(j+l) =d} \ln \Lambda (-m^{2})^{l} l! b_{2j} (x,x) + \order {\Lambda ^{0}} ] 
+    \end{split}
+\end{align}
+It can be seen that the UV divergence in the one-loop effective action are defined by finitely many heat kernel coefficients $b_{k} (x,x)$ with $k<d$. \\
+\indent Moreover, suppose the operator $D$ is in a form:
+\begin{align}
+    D = -(g^{\mu \nu} \Delta _{\mu} \Delta _{\nu} + E)
+\end{align}
+according to %\ref{},
+the trace can be expanded as:
+\begin{align}
+    \Tr e^{-tD} = \sum _{k \ge 0} t^{(k-d)/2} a_{k}
+\end{align}
+where
+\begin{align}
+    a_k = (4\pi)^{-d/2} \int d^{d}x \sqrt{g} b_{k}(x,x)
+\end{align}
+and not showing in detail, but just borrowing the results:
+\begin{align}
+    a_{0} &= (4\pi)^{-d/2} \int d^{d} x \sqrt{g} \\
+    a_{2} &= (4\pi)^{-d/2} 6^{-1} \int d^{d} x \sqrt{g} \Tr [6E + R] \\
+    a_{4} &= (4\pi)^{-d/2} 360 ^{-1} \int d^{d}x \sqrt{g} \Tr \lbrace 60E_{;kk} + 60RE + 180 E^2 \nonumber  \\
+    & + 12 R_{;kk} + 5R^{2} -2R_{ij}R_{ij} + 2R_{ijkl}R_{ijkl} + 30 \Omega _{ij} \Omega _{ij}\rbrace
+\end{align}
+and so on. R stands for curvetures, and $\Omega _{\mu \nu}$ represents the field strength of the connection $\omega$. 
+
+\section{Examples}
+Now it is time to apply this method to examples to see how it works. 
+\subsection{Example 1: $\phi ^{4}$ theory}
+Consider the $\phi ^{4}$ theory in 4d case. The Laagrangian density is given:
+\begin{align}
+    \mathcal{L} = \frac{1}{2} \partial_{\mu} \phi \partial ^{\mu} \phi - \frac{1}{2}m_{0}^{2} \phi^{2} -\frac{1}{4!} \lambda _{0} \phi^4
+\end{align}
+Therefore, the operator $D$ is:
+\begin{align}
+    D = -(\Delta + m_{0}^{2} + \frac{\lambda_{0}}{2}\phi ^{2})
+\end{align}
+Introducing UV and IR cut-off, a 1-loop effective action in terms of coefficients $a_{k}$ is:
+\begin{align}
+    \Gamma _{\text{1-loop}} = -\frac{1}{2} \int _{\Lambda ^{-2}}^{\mu ^{-2}} dt \sum _{k\ge 0} t^{(k-d-2)/2}a_{k} 
+\end{align}
+Thus the divergent part is given by only three terms:
+\begin{align}
+    \Gamma_{\text{1-loop}}^{\text{div}} &= -\frac{1}{2}  \int _{\Lambda ^{-2}}^{\mu ^{-2}} dt (t^{-3} a_{0} + t^{-2} a_{2} + t^{-1} a_{4}) \nonumber \\
+    & = -\frac{1}{2} [\frac{1}{2} (\Lambda ^{4} -\mu ^{4}) a_{0} + (\Lambda ^{2} - \mu ^{2}) a_{2} + \ln (\Lambda ^{2}/\mu ^{2}) a_{4}] \nonumber \\
+    &= -\frac{1}{2} \frac{1}{(4\pi)^{2}} \lbrace \frac{1}{2} (\Lambda ^{4} - \mu ^{4}) \int d^{4}x + (\Lambda ^{2} - \mu ^{2}) \int d^{4}x E \nonumber \\ 
+    &+ \frac{1}{2} \ln (\Lambda ^{2} / \mu ^{2}) \int d^{4}x E^{2} \rbrace 
+\end{align}
+This shoud agree with:
+\begin{align}
+    S = \int d^{4}x (\frac{1}{2}\partial _{\mu} \phi \partial ^{\mu} \phi + \frac{1}{2} m^{2} \phi ^{2} + \frac{\lambda}{4!}\phi^{4})
+\end{align}
+where $m$ and $\lambda$ are couplings at a scale $\mu$.
+Thus comparing only the relevant coefficients:
+\begin{align}
+    \Gamma_{\text{1-loop}}^{\text{div}} &= -\frac{1}{2} \frac{1}{(4\pi)^{2}}  \lbrace \ln(\Lambda/\mu) \int d^{4}x (\lambda _{0} m_{0}^{2} \phi^{2} + \frac{\lambda_{0}^{2}}{4} \phi^{4})  + (\Lambda^{2} - \mu ^{2}) \int d^{4}x\frac{\lambda _{0}}{2} \phi^{2} \rbrace
+\end{align}
+gives equations:
+\begin{align}
+    &-\frac{1}{2} \frac{1}{(4\pi)^{2}} \ln (\Lambda / \mu) \frac{\lambda _{0} ^{2}}{4} = \frac{\lambda}{4!} \\
+    &-\frac{1}{2} \frac{1}{(4\pi)^{2}} (\ln (\Lambda / \mu) \lambda _{0} m_{0}^{2} + (\Lambda ^{2} - \mu ^{2}) \frac{\lambda _{0}}{2}) = \frac{1}{2} m^{2} 
+\end{align}
+To this end, beta functions for those couplings are:
+\begin{align}
+    &\mu \pdv{\lambda}{\mu} = \frac{3}{(4\pi)^{2}} \lambda _{0} ^{2}\\
+    &\mu \pdv{m^{2}}{\mu} = \frac{\lambda _{0}}{(4\pi)^{2}} (m_{0}^{2} + \mu ^{2})
+\end{align}
+They are matching to the known results indeed.
+
+\subsection{Example 2: Non-Linear Sigma Model}
+Anoter example is the Non-Linear Sigma Model (NLSM), wihch is much interesting to observe. Here, after the RG flows are computed, observations will be done for a specific metric. Start from the acction of NLSM defined as:
+\begin{align}
+    S[\varphi] = \frac{1}{2} \int d^{d}x \sqrt{g} h_{ab} (\varphi) \partial _{\mu} \varphi ^{a} \partial ^{\mu} \varphi ^{b}
+\end{align}
+As before, consider writing the field $\varphi (x)$ in terms of a bckground $\bar {\varphi} (x)$ and a corresponding quantum fluctuation $\xi$ (x). Assume that there is a smooth map $\varphi_{s} (x)$ such that $\varphi _{0} (x) = \bar{\varphi}(x)$, $\varphi_{1} = \varphi (x)$ with $\dot{\varphi} _{0} = \xi$ . Consider a curve $\varphi _{s}$ in the target space which represents the geodesic between initial and final points, i.e. $\varphi _{0}$ and $\varphi _{1}$:
+\begin{align}
+    \ddot{\varphi}_{s} ^{a} (x) + \Gamma _{bc}^{a} \dot{\varphi} _{s}^{b}(x) \dot{\varphi} _{s}^{c} (x)  
+\end{align}
+where $\Gamma$ denotes the Christoffel symbol corresponding to the target space metric $h_{ab}$. Then the expansion of the action around the background $\bar{\varphi}$ is given:
+\begin{align}
+    S[\varphi] &=\eval {\sum_{n=0}^{\infty} \frac{1}{n!} \dv[n] {s} S[\varphi _{s}]} _{s=0} \nonumber \\
+    & = \eval {\sum_{n=0}^{\infty} (\nabla _{s})^{n} S[\varphi _{s}]} _{s=0}
+\end{align}
+where $\nabla _{s}$ is the covariant derivative along the curve $\varphi _{s} ^{a}$. Using identities:
+\begin{align}
+    &\nabla_{s} \partial _{\mu} \varphi ^{i} = \partial _{\mu} \dv{\varphi^{i}}{s} + \partial_{\mu} \varphi ^{k} \Gamma _{kj}^{i} \dv{\varphi^{j}}{s} = \nabla _{\mu} \xi ^{i} 
+    & \nabla _{s} h_{ab} = 0 \\
+    & \nabla _{s} \dv{\varphi ^{i}} {s} = 0 \\
+    &[\nabla _{s}, \nabla _{\mu}] Z^{k} = \dv{\varphi ^{i}}{s} \partial _{\mu} \varphi ^{j} R_{lij} ^{k} Z^{l}
+\end{align}
+with $Z^{i}$ is an arbitrary vector, it is followed by:
+\begin{align}
+    \begin{split}
+    S[\varphi] = & \frac{1}{2} \int d^{d}x \sqrt{g} h_{ab}(\bar{\varphi}) \partial _{\mu} \bar{\varphi}^{a} \partial ^{\mu} \bar{\varphi} ^{b} + \int d^{d}x \sqrt{g} h_{ab} \partial _{\mu} \xi ^{a} \partial ^{\mu} \xi ^{b} \\
+    &+ \frac{1}{2} \int d^{d}x \sqrt{g} \lbrace h_{ab} \nabla_{\mu} \xi^{a} \nabla ^{\mu} \xi ^{b} + R_{acdb} \xi ^{c}\xi^{d} \partial _{\mu}\bar{\varphi}^{a} \partial ^{\mu} \bar{\varphi} ^{b} + \cdots
+    \end{split} 
+\end{align}
+Looking at the quadratic part, it lead to an operator:
+\begin{align}
+    D = -(h_{ab} \square + R_{acbd} \partial _{\mu} \bar{\varphi}^{c} \partial ^{\mu} \bar{\varphi}^{d} )
+\end{align}
+Therefore, for instance in $d=4$ case, the 1-loop effective action is given:
+\begin{align}
+    \begin{split}
+    \Gamma _{\text{1-loop}} ^{\text{div}} = &-\frac{1}{2} \frac{1}{(4\pi)^2}\lbrace \frac{1}{2}(\Lambda^4 - \mu ^{4}) \int d^{4}x \sqrt{g} + (\Lambda ^{2} - \mu ^{2}) \int d^{4}x \sqrt{g} \Tr R_{acbd} \partial _{\mu} \bar{\varphi}^{c} \partial ^{\mu} \bar{\varphi}^{d} \\ 
+    &+ \frac{1}{2} \ln (\Lambda ^{2} / \mu ^{2})\int d^{4}x  \sqrt{g} \Tr (R_{acbd} \partial _{\mu} \bar{\varphi}^{c} \partial ^{\mu} \bar{\varphi}^{d}) ^{2} \rbrace
+    \end{split}
+\end{align}
+Thus, comparing only relevant coefficients:
+\begin{align}
+    \mu \pdv{\mu} g_{ab} = \frac{\mu ^{2}} {(4\pi)^2} R_{ab}
+\end{align}
+Adding a generic potential term $V$, the operator reads:
+\begin{align}
+    D = -(h_{ab}\square + R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - \text{Hess} (V))
+\end{align}
+where $\text{Hess}(V)$ is a Hessian of V. Then the divergent part of 1-loop effective action in 4d becomes:
+\begin{align}
+    \begin{split}
+    \Gamma_{\text{1-loop}}^{\text{div}} = &-\frac{1}{2} \frac{1}{(4\pi)^{2}}\lbrace (\Lambda ^{2} - \mu ^{2})\int d^{4}x \sqrt{g} \Tr (R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - \text{Hess} (V)) \\ 
+    &+ \ln (\Lambda/\mu)\int d^{4}x \sqrt{g} \Tr(R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - \text{Hess} (V))^{2}
+    \end{split}
+\end{align}
+By comparing coefficients with an action at scale $\mu$:
+\begin{align}
+    S[\varphi] = \int d^{4}x \sqrt{g} (\frac{1}{2} \tilde h_{ab} \partial _{\mu} \varphi^{a} \partial ^{\mu} \varphi ^{b} + V)
+\end{align}
+flow equations can be obtained as did above. \\
+\indent Now assume that there are 2 scalars $\varphi _{1}$ and $\varphi _{2}$ with the metric given:
+\begin{align}
+    \dd s^{2} = \frac{k}{\varphi_{2} ^{2}} (\dd \varphi_{1} ^{2} + \dd \varphi _{2} ^{2})
+\end{align}
+from which curvatures can be computed with formulae:
+\begin{align}
+    \Gamma _{\mu \nu}^{\lambda} = \frac{1}{2} h^{\lambda \alpha} (h_{\alpha \nu , \mu} + h_{\mu \alpha, \nu} - h_{\mu \nu ,\alpha}) \\
+    R_{\alpha \beta \gamma} ^{\sigma} = \Gamma _{\alpha \gamma, \beta} ^{\sigma} - \Gamma _{\beta \gamma , \alpha} ^{\sigma} + \Gamma _{\alpha \gamma} ^{\tau} \Gamma _{\tau \beta} ^{\sigma} - \Gamma_{\alpha \beta}^{\tau} \Gamma_{\tau \gamma} ^{\sigma}
+\end{align}
+here the summation convention is applied. Non-zero terms are:
+\begin{align}
+    \label{eq:2.53}
+    \Gamma _{12} ^{1} = \Gamma _{21}^{1} = -\frac{1}{\varphi _{2}} \\
+    \label{eq:2.54}
+    \Gamma _{11} ^{2} = \frac{1}{\varphi _{2}}\\
+    \label{eq:2.55}
+    \Gamma _{22}^{2} = -\frac{1}{\varphi _{2}}
+\end{align}
+from which
+\begin{align}
+    R_{212}^{1} = R_{121}^{2} = -R_{221}^{1} = -R_{112}^{2} = -\frac{1}{\varphi_{2} ^{2}}
+\end{align}
+These read:
+\begin{align}
+    R_{1212} = R_{2121} = -\frac{k}{\varphi_{2} ^{4}} ,& \qq{} R_{1221} = R_{2112} = +\frac{k}{\varphi_{2} ^{4}}
+\end{align}
+Finally, the non-vanishing components of Ricci tensor are:
+\begin{align}
+    R_{11} = R_{22} = -\frac{1}{\varphi_{2}^{2}}
+\end{align}
+Suppose that the potential is given in a form of the homogeneous quadratic function of $\varphi_{1}$ and $\varphi _{2}$:
+\begin{align}
+    V= \frac{1}{2} \sum_{i,j} M_{ij} \varphi^{i} \varphi^{j}
+\end{align}
+Hence, its Hessian matrix is:
+\begin{align}
+    Hess(V) = 
+    \begin{bmatrix}
+        M_{1} & m \\
+        m & M_{2}
+    \end{bmatrix}
+\end{align}
+here $M_{11} = M_1$, $M_{22} = M_{2}$ and $M_{12} = M_{21} = m$. Then The relevant divergence of 1-loop effective action is:
+\begin{align}
+    \begin{split}
+        \Gamma _{\text{1-loop}}^{\text{div}} = & -\frac{1}{2} \frac{1}{(4\pi)^2} \int d^{4}x \sqrt{g} \lbrace (\Lambda ^{2} - \mu ^{2})(R_{cd} \partial _{\mu} \varphi ^{c} \partial ^{\mu} \varphi ^{d} - \Tr Hess(V)) \\
+        & + \ln (\Lambda ^{2} / \mu ^{2}) (\frac{1}{2} \Tr Hess(V)^{2}  - \Tr Hess(V) R_{acbd} \partial _{\mu} \varphi ^{c} \partial ^{\mu} \varphi ^{d})
+    \end{split}
+\end{align}
+Therefore, the metric $h_{ab}$ flows as:
+\begin{align}
+    \mu \pdv{\mu} h_{ab} = \frac{1}{8\pi^2} (\mu ^{2} R_{ab} - \Tr Hess(V) R_{acbd})
+\end{align}
+Now considering how the metric, and geodesics eventually, would be modified as the scale varies from $\Lambda$ to $\mu$, integrate again both side, it becomes:
+\begin{align}
+    \label{eq:2.63}
+    h_{ab} ^{\mu} - h_{ab} ^{\Lambda} = \frac{1}{8\pi^{2}}\lbrace \frac{1}{2}(\mu ^{2} - \Lambda ^{2}) R_{ab} - \ln \frac{\mu}{\Lambda} \Tr Hess(V) R_{acbd} \rbrace
+\end{align}
+Assume here that the variation of the scale is so small that the curvature on the right hand side can be thought of as the one corresponding to the initial metric at scale $\Lambda$, writing $\mu = \Lambda (1-\epsilon)$ with $\epsilon \ll 1$, eq.\ref{eq:2.63} gives:
+\begin{align}
+    h_{ab} ^{\mu} \approx h_{ab} ^{\Lambda} + \frac{\epsilon}{8\pi ^{2}}  \qty (\Tr Hess(V) R_{acbd} - \Lambda ^{2} R_{ab})
+\end{align}
+For given metric and a form of the potential, each term is:
+\begin{align}
+    \Tr Hess(V) R_{acbd} &= \frac{1}{k} 
+    \begin{bmatrix}
+        -M_{2} & m \\
+        m & -M_{1}
+    \end{bmatrix} \\
+    R_{ab} &= -\frac{1}{\varphi_{2} ^{2}} \mathbb{1}
+\end{align}
+the metric at a scale $\mu$ is:
+\begin{align}
+    \tilde h_{ab} := h_{ab} ^{\mu} = 
+    \begin{bmatrix}
+        \frac{k}{\varphi _{2} ^{2}} - \frac{\epsilon}{8\pi^{2}} \lbrace \frac{M_{2}}{k} - (\frac{\Lambda}{\varphi})^{2} \rbrace & \frac{\epsilon}{8\pi^{2}} \frac{m}{k} \\
+        \frac{\epsilon}{8\pi^{2}} \frac{m}{k} & \frac{k}{\varphi _{2} ^{2}} - \frac{\epsilon}{8\pi^{2}} \lbrace \frac{M_{1}}{k} - (\frac{\Lambda}{\varphi})^{2} \rbrace
+    \end{bmatrix}
+\end{align}
+and its inverse is:
+\begin{align}
+    \tilde h^{ab} = 
+    \begin{bmatrix}
+        \frac{\varphi_{2}^{2}}{k} + \frac{\epsilon}{8\pi^{2}}(\frac{\varphi_{2}^{2}}{k})^{2} \lbrace \frac{M_{2}}{k} - (\frac{\Lambda}{\varphi_{2}})^{2} \rbrace & -\frac{\epsilon}{8\pi^{2}} \frac{m}{k}(\frac{\varphi_{2}^{2}}{k})^{2} \\
+        -\frac{\epsilon}{8\pi^{2}} \frac{m}{k}(\frac{\varphi_{2}^{2}}{k})^{2} & \frac{\varphi_{2}^{2}}{k} + \frac{\epsilon}{8\pi^{2}}(\frac{\varphi_{2}^{2}}{k})^{2} \lbrace \frac{M_{1}}{k} - (\frac{\Lambda}{\varphi_{2}})^{2} \rbrace
+    \end{bmatrix}
+\end{align}
+Before computation about this new metric, derive geodesics for unperturbed metric $h_{ab}$. From eq.\ref{eq:2.53}, \ref{eq:2.54}, and \ref{eq:2.55}, the geodesic equations are:
+\begin{align}[left=\empheqlbrace]
+    &\ddot \varphi_{1} - \frac{2}{\varphi_{2}} \dot \varphi_{1} \dot \varphi _{2} = 0 \\
+    &\ddot \varphi _{2} + \frac{1}{\varphi _{2}} (\dot \varphi_{1}^{2} - \dot \varphi _{2} ^{2} ) = 0
+\end{align}
+It is apparent that $\dot \varphi _{1} = 0$ satisfies them. Then:
+\begin{align}
+    \varphi_{2} \ddot \varphi_{2} - \dot \varphi_{2}^{2} &=0 \nonumber \\
+    &\Leftrightarrow \frac{\varphi_{2} \ddot \varphi_{2} - \dot \varphi_{2}^{2}}{\varphi_{2}^{2}} = \dv{s} \frac{\dot \varphi_{2}}{ \varphi_{2}} =0 \nonumber \\
+    &\Leftrightarrow \frac{\dot \varphi_{2}}{\varphi_{2}} = c
+\end{align}
+for some constant c. Integrating both side, it yields $\varphi _{2} = \varphi_{2} ^{0} e^{cs}$. Condidering the condition:
+\begin{align}
+    1 = h_{ab} \dot \varphi _{a} \dot \varphi_{b} = \frac{k}{\varphi_{2} ^{2}} (\dot \varphi_{1} ^{2} + \dot \varphi_{2} ^{2}) = kc^{2}
+\end{align}
+Hence, $c= \pm \frac{1}{\sqrt{k}}$. Therefore, one of its geodesics is the vertical line $(\varphi_{1}, \varphi_{2}) = (\varphi_{1}^{0}, \varphi_{2}^{0} e^{\pm s/\sqrt{k}})$ on $(\varphi_{1}, \varphi_{2})$ plane. Now in order to investigate how this geodesic varies as there is a tiny variation on the metric. From flowed metric, one may find:
+\begin{align}
+    &\tilde \Gamma_{11}^{1} = -\frac{\epsilon}{8\pi^{2}} \frac{m}{k^2}\varphi_{2} \\
+    &\tilde \Gamma _{12} ^{1} = -\frac{1}{\varphi_{2}} -\frac{\epsilon}{8\pi^{2}}\frac{M_2}{k^2}\varphi_{2} \\
+    &\tilde \Gamma _{22}^{1} = \frac{\epsilon}{8\pi^{2}} \frac{m}{k^2} \varphi_{2} \\
+    &\tilde \Gamma _{11} ^{2} = \frac{1}{\varphi_{2}} + \frac{\epsilon}{8\pi^{2}}\frac{M_{1}}{k^{2}}\varphi_{2}\\
+    &\tilde \Gamma _{12} ^{2} = \frac{\epsilon}{8\pi ^{2}} \frac{m}{k^{2}}\varphi_{2} \\
+    &\tilde \Gamma _{22} ^{2} = -\frac{1}{\varphi_{2}} -\frac{\epsilon}{8\pi^{2}}\frac{M_1}{k^{2}}\varphi_{2}
+\end{align}
+Therefore, the new geodesic equations are:
+\begin{align}[left=\empheqlbrace]
+    \label{eq:2.79}
+    \ddot \varphi_{1} - \frac{2}{\varphi_{2}} \dot \varphi_{1} \dot \varphi_{2} &= \frac{\epsilon}{8\pi ^{2}} \frac{\varphi_{2}}{k^{2}} (m\dot\varphi_{1}^{2} + 2M_{2} \dot \varphi_{1} \dot \varphi_{2} - m\dot \varphi_{2}^{2} )\\
+    \label{eq:2.80}
+    \ddot \varphi_{2} +\frac{1}{\varphi_{2}} (\varphi_{1} ^{2} - \varphi_{2}^{2}) &= \frac{\epsilon}{8\pi ^{2}}\frac{\varphi_{2}}{k^{2}}(-M_{1} \dot \varphi_{1}^{2} - 2m \dot \varphi_{1} \dot \varphi_{2} + M_{1} \dot \varphi_{2} ^{2})
+\end{align}
+Notice that $\dot \varphi_{1} = 0$ is no longer a solution of the equations. Then assuming an ansatz such that the solutions for those geodesic equations $(\varphi_{1}, \varphi{2})$ are in the form:
+\begin{align}[left=\empheqlbrace]
+    \varphi_{1} &= \tilde \varphi_{1} + \epsilon f(s) \\
+    \varphi_{2} &= \tilde \varphi_{2} + \epsilon g(s) 
+\end{align}
+where tildes denote the unperturbed solutions, with constraints:
+\begin{align}
+    \eval{\varphi_{i} } _{s=0} = \tilde \varphi_{i} ,& \qq{} \eval{\dot \varphi_{i}} _{s=0} = \dot \tilde\varphi_{i} 
+\end{align}
+Knowing $\tilde \varphi_{1} = \varphi_{1}^{0} =$ constant, and $\tilde \varphi_{2} = \varphi_{2} ^{0} e^{s/\sqrt{k}}$, eq.\ref{eq:2.79} leads:
+\begin{align}
+    &(\tilde \varphi_{2} + \epsilon g(s))(\ddot {\tilde {\varphi_{1}}} + \epsilon \ddot f(s)) - 2 (\dot {\tilde{\varphi_{1}}} + \epsilon \dot {f}(s))(\dot {\tilde{\varphi_{2}}} +\epsilon \dot{g}(s)) \nonumber \\
+    &= \frac{\epsilon}{8\pi^{2}}\frac{1}{k^2} (\tilde{\varphi_{2}} + \epsilon g(s))^{2}\lbrace m(\dot{\tilde{\varphi_{2}}} + \epsilon \dot{f}(s))^{2} +2M_{2} (\dot{\tilde{\varphi_{1}}} + \epsilon \dot{f}(s))(\dot{\tilde{\varphi_{2}}} + \epsilon \dot{g}(s)) - m (\dot{\tilde{\varphi_{2}}} + \epsilon \dot{g}(s))^{2} \rbrace \nonumber \\
+    \Rightarrow &\tilde{\varphi_{2}}\ddot{\tilde{\varphi_{1}}}-2\dot{\tilde{\varphi_{1}}}\dot{\tilde{\varphi_{2}}} + \epsilon\lbrace \tilde{\varphi_{2}}\ddot{f}(s) + \ddot{\tilde{\varphi_{1}}}g(s) - 2(\dot{\tilde{\varphi_{1}}}\dot{g}(s) + \dot{\tilde{\varphi_{2}}}\dot{f}(s)) \rbrace  + \mathcal{O}(\epsilon ^{2}) \nonumber \\
+    &= \frac{\epsilon}{8\pi^{2}}\frac{1}{k^{2}} \tilde{\varphi _{2}} ^{2} (m\dot{\tilde{\varphi_{2}}} ^{2} + 2M_{2} \dot{\tilde{\varphi_{1}}}\dot{\tilde{\varphi_{2}}} -m \dot{\tilde{\varphi_{2}}}^{2}) + \mathcal{O}(\epsilon^{2}) \nonumber
+\end{align}
+Then it ends up with a differential equation:
+\begin{align}
+    \label{eq:2.84}
+    \ddot{f} (s) - \frac{2}{\sqrt{k}} \dot {f} (s)+ \frac{1}{8\pi^{2}} \frac{m}{k^{3}}\tilde \varphi_{2} ^{3} = 0 
+\end{align}
+A solution to the homogeneous equation is:
+\begin{align}
+    f_{h} (s) = C_{1} + C_{2} e^{2s/\sqrt{k}} 
+\end{align}
+and let $f_{p} = A e^{3s/ \sqrt{k}}$ be the particular solution, then since $\ddot f_{p} (s) = \frac{9}{k} Ae^{3s/\sqrt{k}}$, $\dot f_{p} (s) = \frac{3}{\sqrt{k}}$, $A = -\frac{k}{3} \frac{1}{8\pi^{2}}\frac{m}{k^{3}} (\varphi_{2}^{0})^{3}$. Therefore:
+\begin{align}
+    f(s) &= f_{h}(s) + f_{p}(s) \nonumber \\
+    &= C_{1} + C_{2} e^{2s/\sqrt{k}} - \frac{k}{3}\frac{1}{8\pi^{2}}\frac{m}{k^{3}}(\varphi_{2}^{0})^{3} e^{3s/\sqrt{k}}
+\end{align}
+Considering its initial conditions:
+\begin{align}
+    f(0) &= C_{1} + C_{2} - \frac{1}{3}\frac{m}{8\pi^{2}k^{2}}(\varphi_{2}^{0})^{3} \\
+    \dot{f}(0) &= \frac{2}{\sqrt{k}}C_{2} -  \frac{1}{8\pi^{2}}\frac{m}{k^{2}\sqrt{k}}(\varphi_{2}^{0})^{3}
+\end{align}
+the correction for $\varphi_{1}$ is given:
+\begin{align}
+    f(s) = -\frac{1}{8\pi^{2}}\frac{m}{6k^{2}}(\varphi_{2}^{0})^{3}(1-3e^{\frac{2s}{\sqrt{k}}} + 2e^{\frac{3s}{\sqrt{k}}})
+\end{align}
+Also, for eq.\ref{eq:2.80}:
+\begin{align}
+    &\tilde{\varphi_{2}}\ddot{\tilde{\varphi_{2}}} -\dot{\tilde{\varphi_{2}}}^{2} + \epsilon(\varphi_{2}\ddot{g}(s) + \ddot{\tilde{\varphi_{2}}} g(s) - 2\dot{\tilde{\varphi_{2}}}\dot{g}(s)) = \frac{\epsilon}{8\pi^{2}}\frac{M_1}{k^2} \tilde{\varphi_{2}}^2 \dot{\tilde{\varphi_{2}}}^2 \\
+    \Rightarrow & \ddot{g}(s) - \frac{2}{\sqrt{k}} \dot{g}(s) +\frac{1}{k}g(s) - \frac{1}{8\pi^{2}}\frac{M_{1}}{k^3} (\varphi_{2}^{0})^{3} e^{\frac{3s}{\sqrt{k}} }= 0
+\end{align}
+Through the same procedure to $f(s)$, the correction for $\varphi_{2}$ is:
+\begin{align}
+    g(s) = \frac{1}{8\pi^{2}} \frac{M_{1}}{4k^{5/2}}(\varphi_{2}^{0})^{3}e^{s/\sqrt{k}} (-\sqrt{k} - 2s +\sqrt{k} e^{2s/\sqrt{k}})
+\end{align}
+Therefore, up to $\order {\epsilon}$, corrected geodesics are:
+\begin{align}[left=\empheqlbrace]
+    \varphi_{1} &= \varphi_{1}^{0} - \frac{\epsilon}{8\pi^2} \frac{m}{6k^{2}} (\varphi_{2}^{0})^{3} (1-3e^{\frac{2s}{\sqrt{k}}} + 2e^{\frac{3s}{\sqrt{k}}}) \\
+     \varphi_{2} &= \varphi_{2}^{0} e^{\frac{s}{\sqrt{k}}} + \frac{\epsilon}{8\pi^{2}}\frac{M_{1}}{4k^{5/2}} (\varphi_{2}^{0})^{3} e^{\frac{s}{\sqrt{k}}} (-\sqrt{k} - 2s + \sqrt{k} e^{\frac{2s}{\sqrt{k}}})
+\end{align}
+Finally, from those information, variations of a distance between two points as the scale variation can be also investigated. For the unperturbed metric, a distance s can be computed as:
+\begin{align}
+    s &= \int _{0}^{s} ds = \int \sqrt{h_{ab} \varphi_{i}\varphi_{j}} \nonumber \\
+    &= \int \sqrt{\frac{k(d\varphi_{1}^{2} + d\varphi_{2}^{2})}{\varphi_{2}^{2}}} \nonumber \\
+    &= \int \sqrt{k}\frac{1}{\varphi_{2}}d\varphi_{2} \nonumber \\
+    & = \sqrt{k} \abs{\ln(\frac{\varphi_{2}}{\varphi_{2}^{2}})}
+\end{align}
+Similarly, a distance for corrected geodesics is:
+\begin{align}
+    s &= \int \sqrt{\tilde h_{ij} \varphi_{i} \varphi_{j}} \nonumber \\
+    &= \int \sqrt{[\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_2}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace ]\dd \varphi_{1}^{2} + \frac{\epsilon}{4\pi^{2}} \frac{m}{k}\dd \varphi_{1} \dd \varphi_{2} +[\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_1}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace ] \dd \varphi_{2}^{2} } \nonumber
+\end{align}
+However, from corrected geodesics, it can be deduced that:
+\begin{align} 
+    \begin{split}
+    \dv{\varphi_{1}}{\varphi_{2}} &= \dv{\varphi_{1}}{\tilde{\varphi_{2}}}\dv{\tilde{\varphi_{2}}}{\varphi_{2}}  \\
+    &= -\frac{\epsilon}{8\pi^{2}}\frac{m}{6k^{2}} (-6\varphi_{2}^{0} \tilde{\varphi_{2}} + 6 \tilde{\varphi_{2}}^{2})(1+\frac{\epsilon}{8\pi^{2}} \frac{M_{1}}{4k^{5/2}} \\
+    & (-\sqrt{k}(\varphi_{2}^{0} )^{2} - 2s(\varphi_{2}^{0}) ^{2} + 3\sqrt{k} \tilde{\varphi_{2}}^{2}))^{-1}  \\
+    &= -\frac{\epsilon}{8\pi^{2}}\frac{m}{k^{2}} (\tilde{\varphi_{2}} - \varphi_{2}^{0})\tilde{\varphi_{2}} + \mathcal{O}(\epsilon ^{2})
+    \end{split}
+\end{align}
+With this aid, the distance can be in the form:
+\begin{align}
+    \begin{split}
+    s &=\int [[\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_2}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace] \lbrace -\frac{\epsilon}{8\pi^{2}} \frac{m}{k^{2}} \tilde{\varphi_{2}}(\tilde{\varphi_{2}} -\varphi_{2}^{0}) \rbrace ^{2} \\
+    & + \frac{\epsilon}{4\pi^{2}}\frac{m}{k}\lbrace -\frac{\epsilon}{8\pi^{2}} \frac{m}{k^{2}} \tilde{\varphi_{2}}(\tilde{\varphi_{2}} -\varphi_{2}^{0}) \rbrace  \\
+    & + [\frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}\lbrace \frac{M_1}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}\rbrace]]^{1/2} \dd {\varphi_{2}}  \\
+    &\sim \int \frac{\sqrt{k}}{\varphi_{2}} [1- \frac{\epsilon}{16\pi^{2}} \frac{\varphi_{2}^{2}}{k} \lbrace\frac{M_{1}}{k} - (\frac{\Lambda}{\varphi_{2}})^{2} \rbrace ] + \order*{\epsilon^{2}} \dd{\varphi_{2}} \\
+    &= \sqrt{k} \ln\abs*{\frac{\varphi_{2}}{\varphi_{2}^{0}}} - \frac{\epsilon}{16\pi^{2}}\lbrace \frac{M_{1}}{2k\sqrt{k}}(\varphi_{2}^{2} - (\varphi_{2}^{0})^{2}) - \frac{\Lambda^{2}}{\sqrt{k}}\ln\abs*{\frac{\varphi_{2}}{\varphi_{2}^{0}}} \rbrace + \order*{\epsilon ^{2}}
+    \end{split}
+\end{align}
+It can be easily noticed that in the limit $\epsilon \to 0$, $\varphi_{2} \to \tilde \varphi_{2}$ and thus the distance for the original geodesic is restored. \\
+\indent As shown in this chapter, the Heat Kernel expansion is a very useful tool in order to obtain the 1-loop effective action. With this mean, the next chapter would deal with the physical system where this thesis is interested in the most.
