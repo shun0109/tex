@@ -1,13 +1,13 @@
 \chapter{Renormalization Group}
 \label{RG}
-Since it is central for this thesis to see how the renormalization group (RG) affects on the SDC, another preliminary we need before the computaion is the concept of renormalization group and how we can carry out the calculations. In this chapter, first we will have introductions to the renormalization group (RG) starting from a review of the generating functional to the beta function, or the RG equations. Understanding the basics of RG, we will provide a specific method for our later computation, named Heat Kernel expansion.
+Since it is central for this thesis to see how the renormalization group (RG) affects on the SDC, another preliminary we need before the computaion is the concept of renormalization group and how we can carry out the calculations. In this chapter, first, we will have introductions to the renormalization group (RG) starting from a review of the generating functional to the beta function, or the RG equations. Understanding the basics of RG, we will provide a specific method for our later computation, named Heat Kernel expansion.
 
 \section{Focused Review of Generating Functional}
 Consider a theory with n fields $\phi^{i} (x)$, $i = 1, \dotso , n$, governed by a classical action $S[\phi]$, and suppose computing its correlation functions:
 \begin{align}
     G^{i_{1}, \dotso , i_{n}} (x_{1}, \dotso ,x_{n} ) := \mel{\Omega _{f}}{T[\phi^{i_{1}}(x_{1}) \dots \phi^{i_{n}} (x_{n})]}{\Omega _{i}}
 \end{align}
-where $\ket{\Omega}$ stands for the ground state in the past or future, and T indicates time ordering. We can extract general observables of the system such as scattering amplitudes from them. By introducing the generating functional $Z[J]$, we can deal with such correlators at onece. Definition of $Z[J]$ is:
+where $\ket{\Omega}$ stands for the ground state in the past or future, and T indicates time ordering. We can extract general observables of the system such as scattering amplitudes from them. By introducing the generating functional $Z[J]$, we can deal with such correlators at once. Definition of $Z[J]$ is:
 \begin{align}
     Z[J] := \sum_{n=0} ^{\infty} \frac{i^{n}}{n!} \int d^{4}x_{1} \dotso d^{4}x_{n}   G^{i_{1}, \dotso , i_{n}} (x_{1}, \dotso ,x_{n} ) J_{i_{1}}(x_{1}) \dots J_{{i_{n}}}(x_{n})
 \end{align}
@@ -15,7 +15,7 @@ then each correlation function can be in a form by functional differentiation:
 \begin{align}
     G^{i_{1}, \dotso , i_{n}} (x_{1}, \dotso ,x_{n} ) = (-i)^{n} (\frac{\delta^{n}Z[J]}{\delta J_{i_{1}}(x_{1}) \dots \delta J_{i_n} (x_{n})}) _{J=0}
 \end{align}
-The generating functional is useful because it is a simple expression in terms of path integral formalism. Such simplicity means not only the easiness to be computed but also practically that it is relatively straightforward to compute perturbatively in terms of Feynman diagrams. 
+The generating functional is useful because it is a simple expression in terms of path integral formalism. Such simplicity means not only the easiness to compute but also the fact that it is relatively straightforward to compute perturbatively in terms of Feynman diagrams. 
 \begin{align}
     G^{i_{1}, \dotso , i_{n}} (x_{1}, \dotso ,x_{n} ) = \int \mathcal{D} \phi e^{iS[\phi]} \phi^{i_1} (x_{1}) \dots \phi ^{i_{n}}(x_n)
 \end{align}
@@ -29,7 +29,7 @@ The special case $n=0$ is the typical example for which
 \end{align}
 Using the definition, we can obtain the following expression for the generating functional:
 \begin{align}
-    Z[J] = \int \mathcal{D} \phi exp\lbrace iS[\phi] + i \int d^{4}x \phi^{i} (x) J_{i} (x) \rbrace
+    Z[J] = \int \mathcal{D} \phi \exp\lbrace iS[\phi] + i \int d^{4}x \phi^{i} (x) J_{i} (x) \rbrace
 \end{align}
 and immediately find:
 \begin{align}
@@ -46,9 +46,9 @@ where $\varphi_{\text{cl}}$ fulfills:
     \label{eq:semi}
     \eval {\fdv{S}{\phi}}_{\phi = \varphi_{\text{cl}}} + J = 0
 \end{align}
-Suppose we have an action $S_{j}[\phi] := S[\phi] + \int d^{4}x (\phi ^{i} J_{i})$, and want to write it in a form:
+Suppose we have an action $S_{J}[\phi] := S[\phi] + \int d^{4}x (\phi ^{i} J_{i})$, and want to write it in a form:
 \begin{align}
-    S_{j} [\varphi_{\text{cl}} + \tilde{\phi}] = S_{J}[\varphi _{\text{cl}}] + S_{2} [\varphi _{\text{cl}}, \tilde{\phi}] + S_{\text{int}}[\varphi_{\text{cl}}, \tilde{\phi}]
+    S_{J} [\varphi_{\text{cl}} + \tilde{\phi}] = S_{J}[\varphi _{\text{cl}}] + S_{2} [\varphi _{\text{cl}}, \tilde{\phi}] + S_{\text{int}}[\varphi_{\text{cl}}, \tilde{\phi}]
 \end{align} 
 where:
 \begin{align}
@@ -63,21 +63,59 @@ This will be followed by the graphical representation of any correlators. Gaussi
 \begin{align}
     \int \mathcal{D} \tilde{\phi} e^{i\tilde{\phi}^{i}\Delta _{ij} \tilde{\phi}^{j}} \tilde{\phi}^{k_{1}}(x_{1}) \dots \tilde{\phi}^{k_{n}} (x_{n}) \propto (\text{det}^{-1/2} \Delta) [(\Delta ^{-1})^{k_{1}k_{2}} \dots (\Delta ^{-1})^{k_{n-1}k_{n}} + (\text{permutations})]
 \end{align}
-for even $n$, while the integrand vanishes if $n$ is odd. The combinatorics in an integral correspond to the combinatorics of all posiible ways to connect graphs whose internal lines represent factors of $\Delta ^{-1}$ and vertices to interactions within $S_{\text{int}}$. In this language, $Z[J]$ denotes the sum over all vacuum graphs with no external lines. Some leading perturbative contributions to the generating functional are:
+for even $n$, while the integrand vanishes if $n$ is odd. The combinatorics in an integral correspond to the combinatorics of all posiible ways to connect graphs whose internal lines represent factors of $\Delta ^{-1}$ and vertices to interactions within $S_{\text{int}}$. In this language, $Z[J]$ denotes the sum over all vacuum graphs with no external lines. Some leading perturbative contributions to the generating functional are schematically:
 \begin{align}
-    Z[J] = N (\text{det}^{-1/2} \Delta)[ 1+
-    \begin{tikzpicture}
-        \draw (0,0) circle (0.5);
-        \draw (0,-1) circle (0.5);
-    \end{tikzpicture}
+    \label{eq:graphs}
+    \begin{split}
+    Z[J] = N (\text{det}^{-1/2} \Delta)&[ 1+
+    \feynmandiagram [small, baseline = (a.base)] {
+        a[dot] -- [out = 45, in = 135,loop, min distance=3cm] a,
+        a -- [out=225, in=315, loop, min distance=3cm] a
+    };
+    + 
+    \feynmandiagram [small, baseline=(a.base), horizontal = a to b]{
+        a[dot] -- [half left] b [dot] -- [half left] a,
+        a -- b
+    }; \\
+    & +
+    \feynmandiagram [small, baseline = (a.base), horizontal = a to b]{
+        a[dot] -- [out =135, in = 225, loop, min distance =3cm] a,
+        a -- b[dot],
+        b -- [out = 45, in= 315, loop, min distance =3cm] b
+    };
+    + 
+    \feynmandiagram [small, baseline=(a.base), horizontal = a to b]{
+        a[dot] -- [half left] b [dot] -- [half left] a,
+        a -- [out=45,in=135,loop,min distance =1cm] b -- [out=225, in=315,loop,min distance=1cm] a
+    }; \\
+    & + \lbrace
+    \feynmandiagram [small, baseline=(a.base), horizontal = a to b]{
+        a[dot] -- [half left] b [dot] -- [half left] a,
+        a -- b
+    };
+    \feynmandiagram [small, baseline=(a.base), horizontal = a to b]{
+        a[dot] -- [half left] b [dot] -- [half left] a,
+        a -- b
+    };
+    \rbrace
+    + \dots
     ]
+    \end{split}
 \end{align}
-where solid lines are propagators and black dots represent interactions appear in $S_{\text{int}}$. \\ This indeed includes all graphs containing those that are disconnected. Such graphs are disconnected in the sense that it is not possible to get between any pair of vertices along some sequence of internal lines. \\
+where lines are propagators and black dots represent interactions appear in $S_{\text{int}}$.  This indeed includes all graphs containing those that are disconnected. Such graphs are disconnected in the sense that it is not possible to get between any pair of vertices along some sequence of internal lines. \\
 \indent Those expansions here are not practical yet in order to carry out the explicit computaions because of the appearance of the background field in the propagator $\Delta _{ij}(x,y) = \frac{\delta^{2}S}{\delta \phi ^{i}(x) \delta \phi ^{j}(y)}$. For example, for a scalar field wit a scalar potential $U(\phi)$, we have $\Delta(x,y) = [-\square + U'' (\varphi)]\delta ^{4} (x-y)$. This is easily inverted in momentum space if $\varphi$ is constant, but is not straightforward to invert for arbitrary $\varphi(x)$. Such a problem is often addressed by expanding in powers of $J_{i}(x)$ so that path integral is evaluated as a semiclassical expansion about a simple backgroud configuration $\varphi _{\text{cl}}^{i}$ which satisfies:
 \begin{align}
     \eval{\fdv{S}{\phi ^{i}}}_{\phi = \varphi _{\text{cl}}} = 0
 \end{align}
-By doing this, for the modified expansion the term $\phi^{i} J_{i}$ in the exponent of the integrand is viewed as an interaction. This is linear in $\phi ^{i}$, so it corresponds to a tadpole contribution, with the line ending in a cross whose Feynman rule is $J_{i}(x)$.
+By doing this, for the modified expansion the term $\phi^{i} J_{i}$ in the exponent of the integrand is viewed as an interaction. This is linear in $\phi ^{i}$, so it corresponds to a tadpole contribution, with the line ending in a cross whose Feynman rule is $J_{i}(x)$ as shown in fig.\ref{fig:tadpole}.
+\begin{figure}[h]
+    \centering
+    \feynmandiagram[horizontal=a to b]{
+        a -- [insertion={[size =7pt]1}] b[dot]
+    };
+    \caption{Feynman rule for the vertex from $S_{\text{lin}}$ in the expasion. The insertion denotes $\delta S / \delta \varphi + J$}
+    \label{fig:tadpole}
+\end{figure}
 
 \subsection{Connected Correlation}
 Instead of dealing with all graphs including both connected and disconnected, it is usually useful to work with a generating functional $W[J]$ whose graphical representaion contains only connected ones. This is achieved by defining as $Z[J] := \exp \lbrace iW[J] \rbrace$, because taking logarithm means subtracting the disconnected graphs. This leads:
@@ -110,7 +148,7 @@ Now consider about the computation of $\Gamma[\varphi]$ within perturbation theo
     \begin{split}
         \exp \lbrace i\Gamma[\varphi]\rbrace &= \exp \lbrace iW[J] - i\int d^{4}x \varphi^{i} J_{i} \rbrace \\
         &= \int \mathcal{D} \phi \exp \lbrace iS[\phi] + i \int d^{4}x (\phi ^{i} - \varphi ^{i})J_{i} \rbrace \\
-        &= \int \mathcal{D} \tilde{\phi} \exp \lbrace iS[\varphi + \tilde{\phi}]+ i\int d^{4}x \tilde{\phi} ^{i} J_{i}
+        &= \int \mathcal{D} \tilde{\phi} \exp \lbrace iS[\varphi + \tilde{\phi}]+ i\int d^{4}x \tilde{\phi} ^{i} J_{i} \rbrace
     \end{split}
 \end{align}
 in the last line we changed the integration variable as $\phi ^{i} \rightarrow \tilde{\phi}^{i} := \phi ^{i} - \varphi ^{i}$. Expanding the action inside the path integral about $\phi^{i} = \varphi ^{i}$:
@@ -130,7 +168,7 @@ and then:
     \label{eq:Gamma}
     \Gamma[\varphi] = S[\varphi] + \frac{i}{2}\ln \det \Delta + (\text{more than 1-loops})
 \end{align}
-The first two terms in eq.\ref{eq:Gamma} are the classical and one-loop contributions respectively, though the last contains the sum over all Feynman graphs with two or more loops. \\
+This is the reason why $\Gamma[\varphi]$ is called the effective action. The dimension of the action is $\text{Energy} \times \text{Time}$, so there is $\hbar$ within the second term of eq.\ref{eq:Gamma} (though usually set to $1$). Then the first term represents a classical action without $\hbar$, the second term adds the quantum contribution to it. Thus $\Gamma[\varphi]$ is called the effective action, which is the classical action plus quantum corrections. Also, the expansion on $\hbar$ is called the loop expansion. The last term contains the sum over all Feynman graphs with two or more loops. \\
 \indent Since $S_{\text{lin}}$ is linear term in $\tilde{\phi}^{i}$, its Feynman rule is as seen before, which inserts a tadpole contribution proportional to $\fdv{S}{\varphi ^{i}} + J_{i}$. Notice that evaluationg at $J_{i} = -\fdv{\Gamma}{\varphi ^{i}}$, eq.\ref{eq:Gamma} gives:
 \begin{align}
     \begin{split}
@@ -139,15 +177,15 @@ The first two terms in eq.\ref{eq:Gamma} are the classical and one-loop contribu
     & = -(\text{sum of tadpole graphs})
     \end{split}
 \end{align}
-Therefore, we can manipulate without knowing expression for $\Gamma[\varphi]$. $J_{i} =-\fdv{\Gamma}{\varphi}$ imdicates that all graphs involving explicit dependence on $J_{i}$ cancel all graphs which can be split into two disconnected graphs. In this language, a graph which cannot be separated into tow pieces is called 1-particle irreducible (1PI). Thus, $\Gamma[\varphi]$ can be obtained by evaluating only 1PI graphs. Therefore, $\Gamma[\varphi]$ is often called the generator of 1PI correlations, or 1PI action. In semiclassical expansion, eq.\ref{eq:Gamma} is computed as a sum of 1PI connected graphs without external lines. \\
-\indent Viewing $\Gamma[\varphi]$ only involves 1PI suggests alternative way in which $\Gamma[\varphi]$ generalizes the classical action. In a perturbative expansion the leading approximation is the leading term in $\Gamma[\varphi] \approx S[\varphi]$. Considering scattering amplitudes, this amounts to summing the tree level graphs from vertices from the classical interactions in $S_{\text{int}}$. On the other hand, suppose computing Feynman graphs by the expansion of $\Gamma[\varphi + \tilde{\phi}]$ to obtain the propagators and vertices. For this, loops for any correlators with Feynman rules for $S[\varphi]$ is same as the quantities given by summing all tree graphs made from the Feynman rules for $\Gamma[\varphi]$. Thus, the full quantum amplitude can be found by computing with $\Gamma[\varphi]$ within the classical approxiamtion. 
+Therefore, we can manipulate without knowing the expression for $\Gamma[\varphi]$. $J_{i} =-\fdv{\Gamma}{\varphi}$ indicates that all graphs involving explicit dependence on $J_{i}$ cancel all graphs which can be split into two disconnected graphs. In this language, a graph that cannot be separated into two pieces is called 1-particle irreducible (1PI). 1-particle and 1PI graphs are shown in eq.\ref{eq:graphs} at two loop representations. Thus, $\Gamma[\varphi]$ can be obtained by evaluating only 1PI graphs. Therefore, $\Gamma[\varphi]$ is often called the generator of 1PI correlations, or 1PI action. In semiclassical expansion, eq.\ref{eq:Gamma} is computed as a sum of 1PI connected graphs without external lines. \\
+\indent Viewing $\Gamma[\varphi]$ only involves 1PI suggests alternative way in which $\Gamma[\varphi]$ generalizes the classical action. In a perturbative expansion, the leading approximation is the leading term in $\Gamma[\varphi] \approx S[\varphi]$. Considering scattering amplitudes, this amounts to summing the tree level graphs from vertices from the classical interactions in $S_{\text{int}}$. On the other hand, suppose computing Feynman graphs by the expansion of $\Gamma[\varphi + \tilde{\phi}]$ to obtain the propagators and vertices. For this, loops for any correlators with Feynman rules for $S[\varphi]$ is same as the quantities given by summing all tree graphs made from the Feynman rules for $\Gamma[\varphi]$. Thus, the full quantum amplitude can be found by computing with $\Gamma[\varphi]$ within the classical approximation. 
 
 \section{Wilsonian Effective Action}
 Now let us consider a field theory with characteristic (large) energy scale $M$, and suppose we want to study physics at a lower energy regime namely $E \ll M$. This is precisely the situation the EFTs are useful. The full theory is defined in terms of the path integral, and we can extract observables from calculating the correlator:
 \begin{align}
     \mel{0}{T[\phi(x_{1}) \dotso \phi(x_{n})]}{0} = \frac{1}{Z}\int \mathcal{D} \phi e^{iS[\phi]} \phi(x_{1}) \dots \phi(x_{n})
 \end{align}
-with the integration measure is:
+with the integration measure:
 \begin{align}
     \int \mathcal{D}\phi = \prod_{x^{\mu}} \int d\phi(x)
 \end{align}
@@ -155,10 +193,10 @@ and
 \begin{align}
     Z = \int \mathcal{D}\phi e^{iS[\phi]}
 \end{align}
-Then consider what happend as we try to perform the path integral by integrating those modes first with energy between $\Lambda _{0}$ and $\Lambda < \Lambda_{0}$. We can split a generic field $\phi(x)$ as:
+Then consider what happens as we try to perform the path integral by integrating those modes first with energy between $\Lambda _{0}$ and $\Lambda < \Lambda_{0}$. We can split a generic field $\phi(x)$ as:
 \begin{align}
     \begin{split}
-        \phi(x) &= \int _{\abs{p} \le \Lambda_{0}} \frac{d^{d}p}{(2\pi)^{d}} e^{ip\dot x} \tilde{\phi}(p) \\
+        \phi(x) &= \int _{\abs{p} \le \Lambda_{0}} \frac{d^{d}p}{(2\pi)^{d}} e^{ip\cdot x} \tilde{\phi}(p) \\
         &= \int _{\abs{p} \le \Lambda} \frac{d^{d}p}{(2\pi)^{d}} e^{ip\cdot x} \tilde{\phi}(p) + \int _{\Lambda < \abs{p} \le \Lambda _{0}} \frac{d^{d}p}{(2\pi)^{d}} e^{ip\cdot x} \tilde{\phi}(p) \\
         & := \varphi (x) + \chi (x)
     \end{split}
@@ -171,7 +209,7 @@ into a product of measures over low- and high-energy modes. Since we are now int
 \begin{align}
     \mel{0}{T[\varphi(x_{1}) \dotso \varphi(x_{n})]}{0} = \frac{1}{Z} \int \mathcal{D} \varphi \int \mathcal{D} \chi e^{iS[\varphi + \chi]} \varphi(x_{1}) \dotso \varphi(x_{n})
 \end{align}
-Then we define a Wilsonian effective action at scale $\Lambda$ $S_{\Lambda}[\varphi]$ as follows:
+Then we define a Wilsonian effective action at scale $\Lambda$, $S_{\Lambda}[\varphi]$ as follows:
 \begin{align}
     e^{iS_{\Lambda}[\varphi]} := \int \mathcal{D}\chi e^{iS[\varphi + \chi]}
 \end{align}
@@ -180,7 +218,7 @@ and we have chosen $\Lambda < M$ to integrate out the physics associated with $M
     S_{\Lambda} [\varphi] &= \int d^{d}x \mathcal{L}_{\Lambda}^{\text{eff}}(x) \\
     \mathcal{L}_{\Lambda}^{\text{eff}(x)} &= \sum_{i} g_{i}\mathcal{O}_{i}(x)
 \end{align}
-here $\mathcal{L}_{\Lambda}^{\text{eff}}(x)$ is an effective Lagrangian at scale $\Lambda$.  It is an infinite sum over local operators $\mathcal{O}_{i}$ allowed by symmetries. The coefficients gi are referred to as Wilson coefficients.
+here $\mathcal{L}_{\Lambda}^{\text{eff}}(x)$ is an effective Lagrangian at scale $\Lambda$.  It is an infinite sum over local operators $\mathcal{O}_{i}$ allowed by symmetries. The coefficients $g_{i}$ are referred to as Wilson coefficients.
 \subsection{Running Couplings and Their Beta-functions}
 It is important to notice that the partition function:
 \begin{align}
@@ -202,18 +240,18 @@ Eq.\ref{eq:rgpf} is known as the renormalization group equation for the partitio
 
 
 \subsection{1PI for Wilsonian Action}
-Here let us consider the 1PI for a Wilsonian effective action $S_{\Lambda} [\varphi]$ following the procedure in previous section. To begin with, for our convinience by the Wick rotation we may have:
+Here let us consider the 1PI for a Wilsonian effective action $S_{\Lambda} [\varphi]$ following the procedure in the previous section. To begin with, for our convenience by the Wick rotation we may have:
 \begin{align}
     S_{\Lambda}[\varphi] := iS_{E,\Lambda}[\varphi]
 \end{align}
-and from now on we will just write this as $S_{\Lambda}[\varphi]$ unless it makes serious confusions. Then the generating functional for the Green functions of a field $\varphi$ in the path integral representaion is:
+and from now on we will just write this as $S_{\Lambda}[\varphi]$ unless it makes serious confusions. Then the generating functional for the Green functions of a field $\varphi$ in the path integral representation is:
 \begin{align}
     \begin{split}
         Z[J] &= \int \mathcal{D}\varphi \exp (-S_{\Lambda} [\varphi] - \int d^{d}x J(x)\varphi(x)) \\
         & = \int \mathcal{D} \varphi \exp (-\int d^{d}x (\mathcal{L} [\varphi(x)] + J(x)\varphi(x)))
     \end{split}
 \end{align}
-with an external source $J(x)$. Suppose then that a field $\varphi (x)$ can be splitted into two pieces: a classical background $\zeta(x)$ and a quantum fluctuations $\eta (x)$ so that:
+with an external source $J(x)$ \parencite{srednicki_quantum_2007, zee_quantum_2003, weinberg_quantum_1996}. Suppose then that a field $\varphi (x)$ can be splitted into two pieces: a classical background $\zeta(x)$ and a quantum fluctuations $\eta (x)$ so that:
 \begin{align}
     \varphi(x) = \zeta(x) + \eta(x)
 \end{align}  
@@ -228,7 +266,7 @@ with a condition $\eval{\fdv{S}{\varphi}} _{\varphi = \zeta} + J(x) = 0$ is sati
 \end{align}
 The second term of eq.\ref{eq:expand} is identically zero due to the equation of motion. Then the generating functional can be in the form:
 \begin{align}
-    Z[J] = e^ {\qty (-\int d^{d}x (\mathcal {L} [\zeta (x)] + J(x) \zeta (x)))} \int \mathcal {D} \eta e^{- \frac{1}{2} \int d^{d}x d^{d}y \eval {\frac{\delta ^{2} \mathcal{L}}{\delta \varphi(x) \delta \varphi(y)}} _{\phi = \zeta} \eta(x)\eta(y) \cdots}
+    Z[J] = e^ {\qty (-\int d^{d}x (\mathcal {L} [\zeta (x)] + J(x) \zeta (x)))} \int \mathcal {D} \eta e^{- \frac{1}{2} \int d^{d}x d^{d}y \eval {\frac{\delta ^{2} \mathcal{L}}{\delta \varphi(x) \delta \varphi(y)}} _{\phi = \zeta}} \eta(x)\eta(y) \cdots
 \end{align}
 because the first integral in eq.\ref{eq:expand} has nothing to do with the fluctuation $\eta(x)$. Notice that the remaining path integral over $\eta$ is of Gaussian form and can be computed explicitly:
 \begin{align}
@@ -248,12 +286,13 @@ The first term is apparently the classical action. Thus the one-loop effective a
     \label{eq:2.8}
     \Gamma_{\text{1-loop}} [\varphi] = \frac{1}{2} \text{Tr} \qty[\ln \frac{\delta ^{2} \mathcal{L}}{\delta \varphi(x) \delta \varphi(y)}]
 \end{align}
-The divergent part of eq.\ref{eq:2.8} is the same as the counter-terms, i.e. the action at a renormalized scale. Therefore, it is necessary to be able to carry out this trace in some ways in order to find the beta functions. Here we will adopt the method of Heat Kernel expansion. 
+The divergent part of eq.\ref{eq:2.8} is the same as the renormalized effective action. Therefore, it is necessary to be able to carry out this trace in some ways in order to find the beta functions. For our computations we will adopt the method of Heat Kernel expansion explained as follows. 
 
 \section{Heat Kernel Expansion}
 \subsection{General Formalism}
-For the manipulation of the trace, introduce the heat kernel:
+For the manipulation of the trace, introduce the heat kernel \parencite{vassilevich_heat_2003, barvinsky_heat_2022,avramidi_heat_1994}:
 \begin{align}
+    \label{eq:kernel}
     K(t;x,y;D) = \mel{x}{e^{-tD}}{y}
 \end{align}
 such that it satisfies the heat conduction equation:
@@ -274,10 +313,20 @@ and for $D = D_{0}= -\Delta +m^2 $:
 \end{align}
 For a general D, $K(t;x,y;D_{0})$ still describes the leading singularity at $t \to 0$:
 \begin{align}
+    \label{eq:13}
     K(t;x,y;D) = K(t;x,y;D_{0}) (1 + tb_{2} (x,y) + t^{2} b_{4}(x,y) + \cdots)
 \end{align}
 Coefficients $b_{k} (x,y)$ are regular in the limit $y \to x$, and called the heat kernel coefficients. \\
-\indent It is needed to compute the functional:
+\indent The propagator $D^{-1} (x,y)$ is defined through the heat kernel:
+\begin{align}
+    D_{-1}(x,y) = \int _{0}^{\infty} dt K(t;x,y;D)
+\end{align} 
+from \ref{eq:kernel} if we assume that the heat kernel would vanish fast enough in the limit $t \rightarrow \infty$. We can integrate eq.\ref{eq:13} and get:
+\begin{align}
+    D^{-1} (x,y) \approx 2 (4\pi)^{-n/2} \sum _{j=0} (\frac{\abs{x-y}}{2m})^{-\frac{n}{2} + j+1} K^{-\frac{n}{2}+j+1}(\abs{x-y}m) b_{2j} (x,y)
+\end{align}
+where we suppose $b_{0} = 1$. And so it implies that the singularities in the propagator at coinciding points are defined by the finite heat kernel coefficients $b_{k}$. \\
+\indent We are required to compute the functional provided in the form of trace:
 \begin{align}
     \Gamma_{\text{1-loop}} = \frac{1}{2} \Tr \ln D
 \end{align}
@@ -291,13 +340,14 @@ But for each positive eignevalue $\lambda$ of the operator $D$, an identity is:
 \end{align}
 Then eq.\ref{eq:2.8} can be rewritten:
 \begin{align}
+    \label{eq:61}
     \Gamma _{\text{1-loop}} = -\frac{1}{2} \int _{0}^{\infty} \frac{dt}{t} K(t,D)
 \end{align}
 where 
 \begin{align}
     K(t,D) = \Tr e^{-tD} = \int d^{d} x \sqrt{g} K(t;x,x;D)
 \end{align}
-To see a UV divergence, introduce a cut-off at $t=\Lambda ^{-2}$, and compute a part of $\Gamma _{\text{1-loop}}$ which diverges in the limit $\Lambda \to 0$:
+To see a UV divergence, introduce a cut-off at $t=\Lambda ^{-2}$, and compute some parts of $\Gamma _{\text{1-loop}}$ which would diverge in the limit $\Lambda \to \infty$:
 \begin{align}
     \begin{split}
     \Gamma _{\text{1-loop}} ^{\text{div}} =&  -(4\pi)^{-d/2} \int d^{d} x \sqrt{g} [ \sum_{2(j+l)< d} \Lambda ^{d-2j-2l} b_{2j}(x,x) \frac{(-m^{2})^{l} l!} {d-2j-2l}  \\
@@ -305,12 +355,55 @@ To see a UV divergence, introduce a cut-off at $t=\Lambda ^{-2}$, and compute a 
     \end{split}
 \end{align}
 It can be seen that the UV divergence in the one-loop effective action are defined by finitely many heat kernel coefficients $b_{k} (x,x)$ with $k<d$. \\
-\indent Moreover, suppose the operator $D$ is in a form:
+\indent Consider a smooth compact Riemannian manifold M with smooth boundary $\partial M$ and a vector buldle V over M. Consider a differential operator on V. Now let the operator be second order and the Laplace type written as:
 \begin{align}
-    D = -(g^{\mu \nu} \Delta _{\mu} \Delta _{\nu} + E)
+    D = -(g^{\mu \nu} \partial _{\mu} \partial _{\nu} + + a^{\sigma} + b)
 \end{align}
-according to %\ref{},
-the trace can be expanded as:
+where $g^{\mu \nu}$ is the inverse metric tensor on M. Also $a^{\sigma}$ and b are matrix valued functions on M. We can write uniquely it with another matrix valued function such that:
+\begin{align}
+    D = - (g^{\mu \nu} \nabla _{\mu} \nabla _{\nu} + E)
+\end{align}
+where $\nabla = \nabla ^{[R]} + \omega$ is the covariant derivative consisting of Riemann $\nabla ^{[R]}$ and gauge $\omega$ parts. \\
+\indent The operator $\exp (-tD)$ with $t>0$ is the trace class on the space of square integrable functions $L^{2} (V)$. That is, for a smooth function f on M:
+\begin{align}
+    \label{eq:18}
+    K(t,f,D) = \Tr _{L^{2}} (f(\exp (-tD)))
+\end{align} 
+is well defined. It also can be represented as:
+\begin{align}
+    K(t,f,D) = \int _{M} d^{n}x \sqrt{g} \Tr _{V} K(t;x,x;D) f(x)
+\end{align}
+For the right-hand side of eq.\ref{eq:18}, there is an asymmptotic expansion \parencite{greiner_asymptotic_1971} as $t \rightarrow 0$
+\begin{align}
+    \Tr _{L^{2}} (f \exp(-tD)) \approx \sum _{k\geq 0} t^{(k-n)/2} a_{k}(f,D)
+\end{align}
+where the coefficients $a_{k}$ can be written in terms of $b_{k}$ as:
+\begin{align}
+    a_{k}(f,D) = (4\pi)^{-n/2} \int _{M} d^{n} x \sqrt{g} b_{k}(x,x) f(x)
+\end{align}
+For a positive operator D, the zeta function is defined as:
+\begin{align}
+    \zeta (s,f,D) = \Tr _{L^{2}} (fD^{-s})
+\end{align}
+Also the zeta function is linked to the heat kernel:
+\begin{align}
+    \zeta (s,f,D) = \frac{1}{\Gamma (s)} \int _{0}^{\infty} dt t^{s-1} K(t,f,D)
+\end{align}
+Therefore, the heat kernel itself is:
+\begin{align}
+    K(t,f,D) = \frac{1}{2\pi i} \oint ds t^{-s} \Gamma (s) \zeta (s,f,D)
+\end{align}
+Furthermore, thepoles can be related to the coefficients:
+\begin{align}
+    a_{k}(f,D) = \text{Res} _{s= (n-k)/2} \Gamma(s) \zeta(s,f,D)
+\end{align}
+Particularly:
+\begin{align}
+    \label{eq:27}
+    a_{n}(f,D) = \zeta(0,f,D)
+\end{align}
+We can use this zeta function to regularize the effective action, and obtain the renormalized effective action \parencite{vassilevich_heat_2003,hawking_zeta_1977}. \\
+\indent Now we have $f=1$ and the trace can be expanded as:
 \begin{align}
     \Tr e^{-tD} = \sum _{k \ge 0} t^{(k-d)/2} a_{k}
 \end{align}
@@ -318,17 +411,17 @@ where
 \begin{align}
     a_k = (4\pi)^{-d/2} \int d^{d}x \sqrt{g} b_{k}(x,x)
 \end{align}
-and not showing in detail, but just borrowing the results:
+and not showing in detail, but just borrowing the results from \parencite{vassilevich_heat_2003}:
 \begin{align}
     a_{0} &= (4\pi)^{-d/2} \int d^{d} x \sqrt{g} \\
     a_{2} &= (4\pi)^{-d/2} 6^{-1} \int d^{d} x \sqrt{g} \Tr [6E + R] \\
     a_{4} &= (4\pi)^{-d/2} 360 ^{-1} \int d^{d}x \sqrt{g} \Tr \lbrace 60E_{;kk} + 60RE + 180 E^2 \nonumber  \\
     & + 12 R_{;kk} + 5R^{2} -2R_{ij}R_{ij} + 2R_{ijkl}R_{ijkl} + 30 \Omega _{ij} \Omega _{ij}\rbrace
 \end{align}
-and so on. R stands for curvetures, and $\Omega _{\mu \nu}$ represents the field strength of the connection $\omega$. 
+and so on. R stands for curvetures, and $\Omega _{\mu \nu}$ represents the field strength of the connection $\omega$. This is a really efficient way to calculate the 1-loop effective action because all we need to do is to determine the operator from theories. We will refer to the higher coefficients in the appendix \ref{appendixa}. There, we will also provide some descriptions of another method for caluculation of the heat kernel coefficients.
 
 \subsection{Example}
-Let us see how heat kernel expansion works through a simple example. Consider the $\phi ^{4}$ theory in 4d case. The Laagrangian density is given:
+Let us see how heat kernel expansion works through a simple example. Consider the $\phi ^{4}$ theory in 4d case. The Lagrangian density is given:
 \begin{align}
     \mathcal{L} = \frac{1}{2} \partial_{\mu} \phi \partial ^{\mu} \phi - \frac{1}{2}m_{0}^{2} \phi^{2} -\frac{1}{4!} \lambda _{0} \phi^4
 \end{align}
@@ -366,4 +459,4 @@ To this end, beta functions for those couplings are:
     &\mu \pdv{\lambda}{\mu} = \frac{3}{(4\pi)^{2}} \lambda _{0} ^{2}\\
     &\mu \pdv{m^{2}}{\mu} = \frac{\lambda _{0}}{(4\pi)^{2}} (m_{0}^{2} + \mu ^{2})
 \end{align}
-They are matching to the known results indeed.
+They are matching to the known results \parencite{srednicki_quantum_2007,anselmi_introduction_2009, peskin_introduction_1995} indeed.

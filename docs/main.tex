@@ -19,7 +19,7 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage{mathpazo} % Use the Palatino font by default
 
-\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
+\usepackage[backend=bibtex,style=numeric,sorting=none,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
 
 \addbibresource{reference.bib} % The filename of the bibliography
 
@@ -46,8 +46,11 @@ headsepline, % Uncomment to get a line under the header
 %	DECLARATION PAGE
 %----------------------------------------------------------------------------------------
 
-%\begin{declaration}
+\begin{declaration}
 %\addchaptertocentry{\authorshipname} % Add the declaration to the table of contents
+\noindent I hereby declare that this thesis is my own work, and that I have not used
+any sources and aids other than those stated in the thesis.
+
 %\noindent I, \authorname, declare that this thesis titled, \enquote{\ttitle} and the work presented in it are my own. I confirm that:
 
 %\begin{itemize} 
@@ -58,15 +61,13 @@ headsepline, % Uncomment to get a line under the header
 %\item I have acknowledged all main sources of help.
 %\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
 %\end{itemize}
+\vspace{4cm}
  
-%\noindent Signed:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
- 
-%\noindent Date:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
-%\end{declaration}
+\hspace{2cm} Place, Date \hfill Signature \hspace{2cm}
 
-%\cleardoublepage
+\end{declaration}
+
+\cleardoublepage
 
 
 %----------------------------------------------------------------------------------------
@@ -78,7 +79,7 @@ headsepline, % Uncomment to get a line under the header
 %----------------------------------------------------------------------------------------
 %	ACKNOWLEDGEMENTS
 %----------------------------------------------------------------------------------------
-%\input{chapters/acknowledgement}
+\input{chapters/acknowledgement}
 
 
 %----------------------------------------------------------------------------------------
@@ -166,7 +167,7 @@ headsepline, % Uncomment to get a line under the header
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-%\include{chapters/AppendixA}
+\include{chapters/appendixA}
 %\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
 

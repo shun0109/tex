@@ -1,26 +1,26 @@
 \chapter{Computations}
 \label{computations}
-In previous chapters, we have all tools for the computaions. In this chapter, we will first provide a simple but non-trivial model, non-linear sigma model. We will also see SDC is satisfied onsuch a model. Then adding various potential terms, the RG computations will be carried out, and by finding the variations of the geodesic distances and assuming SDC will be still valid at varied scale, we may observe new kinds of constraints. 
+In previous chapters, we have all tools for the computations. So we are ready to carry out our computations. In this chapter, we will first provide a simple but non-trivial model, the Poincaré half-plane model. We will also see SDC is satisfied on specific geodesic paths for such a model. Then adding various potential terms, we will perform RG computations. Finding the variations of the geodesic distances and assuming that SDC will be still valid at varied scales, we may observe new kinds of constraints they must obey to fulfill SDC. 
 
-
-\section{Non-Linear Sigma Model}
-Consider an effective theory with two real scalars $\varphi_{1}$ and $\varphi_{2}$ with its kinetic term given:
+\section{Pincaré Half-Plane Model}
+    Consider an effective theory with two real scalars $\varphi_{1}$ and $\varphi_{2}$ with its kinetic term given \parencite{calderon-infante_convex_2021-1}:
 \begin{align}
-    \frac{k}{\varphi_{2}^{2}} 
+    \frac{k}{\varphi_{2}^{2}} (\partial _{\mu} \varphi_{1}\partial ^{\mu} \varphi ^{1} + \partial _{\mu} \varphi_{2} \partial ^{\mu} \varphi ^{2})
 \end{align}
-where $\sqrt{k}$ is a free parameter. That is, we have an action defiend as:
+where $k$ is a free parameter. That is, we have an action defined as:
 \begin{align}
     S[\varphi] = \frac{1}{2}\int d^{d}x \sqrt{g} h_{ab}(\varphi) \partial _{\mu} \varphi^{a} \partial ^{\mu} \varphi^{b}
 \end{align}
 with metric:
 \begin{align}
-    \dd s^{2} = \frac{k}{\varphi_{2}^{2}} (\dd \varphi_{1}^{2} \dd \varphi_{2}^{2} )
+    \dd s^{2} = \frac{k}{\varphi_{2}^{2}} (\dd \varphi_{1}^{2} + \dd \varphi_{2}^{2} )
 \end{align}
+This is called the Poincaré half-plane model for a reason stated later. \\
 Notice that $k$ determines the Ricci scalar curvature:
 \begin{align}
     R = -\frac{2}{k}
 \end{align}
-Now we consider that SDC is satisfied on this moduli space. In other words, we assume there exists a tower of states with mass scale:
+Now we consider that SDC is satisfied on this moduli space. In other words, we assume that there exists a tower of states with mass scale:
 \begin{align}
     M \sim \varphi_{2}^{-a} ,& \qq{} a>0
 \end{align}
@@ -29,7 +29,7 @@ Besides, curvatures can be computed with formulae:
     \Gamma _{\mu \nu}^{\lambda} = \frac{1}{2} h^{\lambda \alpha} (h_{\alpha \nu , \mu} + h_{\mu \alpha, \nu} - h_{\mu \nu ,\alpha}) \\
     R_{\alpha \beta \gamma} ^{\sigma} = \Gamma _{\alpha \gamma, \beta} ^{\sigma} - \Gamma _{\beta \gamma , \alpha} ^{\sigma} + \Gamma _{\alpha \gamma} ^{\tau} \Gamma _{\tau \beta} ^{\sigma} - \Gamma_{\alpha \beta}^{\tau} \Gamma_{\tau \gamma} ^{\sigma}
 \end{align}
-here the summation convention is applied. Non-zero terms are:
+Here the summation convention is applied. Non-zero terms are:
 \begin{align}
     \label{eq:2.53}
     \Gamma _{12} ^{1} = \Gamma _{21}^{1} = -\frac{1}{\varphi _{2}} \\
@@ -46,23 +46,46 @@ These read:
 \begin{align}
     R_{1212} = R_{2121} = -\frac{k}{\varphi_{2} ^{4}} ,& \qq{} R_{1221} = R_{2112} = +\frac{k}{\varphi_{2} ^{4}}
 \end{align}
-Furthermore, the non-vanishing components of Ricci tensor are:
+Furthermore, the non-vanishing components of the Ricci tensor are:
 \begin{align}
     R_{11} = R_{22} = -\frac{1}{\varphi_{2}^{2}}
 \end{align}
 Also, its geodesic equations are:
 \begin{align}[left=\empheqlbrace]
+    \label{eq:geo}
     \begin{split}
         \ddot \varphi_{1} - \frac{2}{\varphi_{2}} \dot \varphi_{1} \dot \varphi_{2} &= 0 \\
-        \ddot \varphi_{2} +\frac{1}{\varphi_{2}} (\varphi_{1} ^{2} - \varphi_{2}^{2}) &=0
+        \ddot \varphi_{2} +\frac{1}{\varphi_{2}} (\dot \varphi_{1} ^{2} - \dot \varphi_{2}^{2}) &=0
     \end{split}
 \end{align}
-Thus it can be easily seen that on the $(\varphi_{1},\varphi_{2})$ space, geodesics are either vertical lines or upper-half circles with centers on the $\varphi_{2} = 0$ line. Therefore, the only geodesics approaching the infinite distance limits are vertical lines with $\varphi_{1} = $ constant. Such geodesics are $(\varphi_{1}, \varphi_{2}) =  (\varphi_{1}^{0}, \varphi_{2}^{0} e^{\frac{s}{\sqrt{k}}})$, and thus the distance is:
+From the first equation of eq.\ref{eq:geo}, it is obvious that $\dot \varphi _{1} = 0$ is one of the solutions. Then the second one will be reduced to:
+\begin{align}
+    \varphi _{2} \ddot{\varphi}_{2} - \dot \varphi _{2} ^{2} = 0
+\end{align}
+But notice:
+\begin{align}
+    \dv{s}(\frac{\dot \varphi_{2}}{\varphi_{2}}) = \frac{\varphi _{2} \ddot{\varphi}_{2} - \dot \varphi _{2} ^{2}}{\varphi_{2}^{2}} =0
+\end{align}
+and so:
+\begin{align}
+    \frac{\dot \varphi_{2}}{\varphi_{2}} = c
+\end{align}
+is a real constant. Integrating both side with respective to $s$, with a fact that $\varphi_{2} >0$, we find $\varphi_{2} = \exp \lbrace a(s-s_{0}) \rbrace$. for some real constant $s_{0}$. Assuming the parameter $s$ represents the arc length, we have a constraint on $s$ such that:
+\begin{align}
+    1 = h(\dot \varphi, \dot \varphi) = h_{ij} \dot \varphi^{i} \dot \varphi^{j} = \frac{k}{\varphi_{2}^{2}} (\dot \varphi_{1} ^{2} + \dot \varphi_{2} ^{2}) = kc^{2}
+\end{align}
+thus $c= \pm \frac{1}{\sqrt{k}}$. The choice of the sign determines the direction the line traverses either up- or downward. Now we will only consider the one which goes upward. This gives a geodesic path:
+\begin{align}
+    s \rightarrow (\varphi_{1}^{0}, \varphi_{2}^{0} e^{\frac{s}{\sqrt{k}}})
+\end{align}
+where $\varphi_{i}^{0}$ represents the initial values. This indeed corresponds to the vertical line on the $(\varphi_{1}, \varphi_{2})$ plane. From this geodesic path, we can deduce the distance between two points:
 \begin{align}
     \begin{split}
-    s &= \int \sqrt{h_{11} \dd \varphi_{1} ^{2} + h_{22} \dd \varphi_{2} ^{2}} \\
+    s &= \int \dd s \\
+    &= \int \sqrt{h_{11} \dd \varphi_{1} ^{2} + h_{22} \dd \varphi_{2} ^{2}} \\
+    &= \int \sqrt{\frac{k}{\varphi_{2} ^{2}}[(\dv{\varphi_{1}}{\varphi_2})^{2} + 1]} \dd \varphi_{2} \\
     &= \int \sqrt{k}\frac{\dd \varphi_{2}}{\varphi_{2}} \\
-    &= \sqrt{k} \ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{2}}}
+    &= \sqrt{k} \ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{0}}}
     \end{split}
 \end{align}
 The mass scale of the tower is now:
@@ -70,7 +93,56 @@ The mass scale of the tower is now:
     M \sim \exp (-\frac{a}{\sqrt{k}}s) \sim \exp (-\omega s)
 \end{align}
 then leading to SDC with decay rate $\omega = \frac{a}{\sqrt{k}}$. Indeed, this is $\order {1}$. \\
-\indent As before, consider writing the field $\varphi (x)$ in terms of a bckground $\bar {\varphi} (x)$ and a corresponding quantum fluctuation $\xi$ (x). Assume that there is a smooth map $\varphi_{s} (x)$ such that $\varphi _{0} (x) = \bar{\varphi}(x)$, $\varphi_{1} = \varphi (x)$ with $\dot{\varphi} _{0} = \xi$ . Consider a curve $\varphi _{s}$ in the target space which represents the geodesic between initial and final points, i.e. $\varphi _{0}$ and $\varphi _{1}$:
+\indent Next consider the case $\dot \varphi_{1} \neq 0$ and note:
+\begin{align}
+    \begin{split}
+    \dv{s}(\frac{\varphi_{2} \dot \varphi_{2}}{\dot \varphi _{1}} ) &= \frac{\dot \varphi_{1} \varphi_{2} \dot \varphi_{2} + \dot \varphi_{1} (\dot \varphi_{2})^{2} - \ddot \varphi_{1} \varphi_{2} \dot \varphi_{2}}{(\dot \varphi_{1})^{2}} \\
+    & = \frac{\dot \varphi_{1} [\varphi_{2} \ddot \varphi_{2} + (\dot \varphi_{1})^{2} - (\dot \varphi_{2})^{2} ] - \dot \varphi_{2} [\varphi_{2} \ddot \varphi_{1} -2\dot \varphi_{1} \dot \varphi_{2}] -(\dot \varphi_{1})^{3}}{(\dot \varphi_{1})^{2}} \\
+    &= -\dot \varphi_{1}
+    \end{split} 
+\end{align}
+that is:
+\begin{align}
+    \dv{s}(\frac{\varphi_{2} \dot \varphi_{2}}{\dot \varphi_{1}} + \varphi_{1}) =0
+\end{align}
+Therefore:
+\begin{align}
+    \frac{\varphi_{2} \dot \varphi_{2}}{\dot \varphi_{1}} + \varphi_{1} = a
+\end{align}
+is a real constant. This can be rewritten in:
+\begin{align}
+    \varphi_{1} \dot \varphi_{1} + \varphi_{2} \dot \varphi_{2} = a \dot \varphi_{1} 
+\end{align}
+Integrating both sides with respective to $s$, it gives:
+\begin{align}
+    \frac{1}{2} (\varphi_{1}^{2} + \varphi_{2} ^{2}) = a\varphi_{1} + b
+\end{align}
+here b is another real constant. Thus:
+\begin{align}
+    (\varphi_{1}-a)^{2} + \varphi_{2} ^{2} = a^{2} + 2b
+\end{align}
+This geodesic path is non-empty if and only if we have a condition $a^{2} + 2b = r^{2} >0$. Therefore the geodesic path on $(\varphi_{1},\varphi_{2})$ plane corresponds to upper semicircles centered on $\varphi_{1}$ axis. Note that while we have two kinds of geodesic path as shown in fig\ref{fig:geodesics}, the only geodesics approaching $\varphi_{2} \rightarrow \infty$ are vertical lines with $\varphi_{1} =$ constant. So we will study only vertical geodesics.\\
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=5]
+        \draw[->] (-0.1,0) -- (1,0) node[right=2pt] {$\varphi_{1}$};
+        \draw[->] (0,-0.1) -- (0,1) node[above=2pt] {$\varphi_{2}$};
+        \draw[-] (0.2,0) node[below=2pt] {$\varphi_{1}^{0}$} -- (0.2,1);
+        \begin{scope}
+            \clip (0.0,0) rectangle (1,1);
+            \draw (0.3,0) circle(0.1);
+            \draw (0.5,0) circle(0.3);
+            \draw (0.7,0) circle(0.5);
+            \draw (0.1,0) circle(0.1);
+            \draw (-0.3,0) circle(0.5);
+        \end{scope}
+    \end{tikzpicture}
+    \caption{Collection of some selected geodesics on $(\varphi_{1}, \varphi_{2})$ plane for this model. $\varphi_{1}^{0}$ denotes an arbitrary constant for the initial value of $\varphi_{1}$.}
+    \label{fig:geodesics}
+\end{figure} 
+\indent In order to compute the 1-loop contribution of the effective action, first of all, consider writing the field $\varphi (x)$ in terms of a background $\bar {\varphi} (x)$ and a corresponding quantum fluctuation $\xi(x)$ 
+\parencite{ketov_all_1996,codello_fixed_2009, flore_functional_2013,friedan_nonlinear_1985,graham_three-loop_1987}. 
+Assume that there is a smooth map $\varphi_{s} (x)$ such that $\varphi _{0} (x) = \bar{\varphi}(x)$, $\varphi_{1} = \varphi (x)$ with $\dot{\varphi} _{0} = \xi$ . Consider a curve $\varphi _{s}$ in the target space which represents the geodesic between initial and final points, i.e. $\varphi _{0}$ and $\varphi _{1}$:
 \begin{align}
     \ddot{\varphi}_{s} ^{a} (x) + \Gamma _{bc}^{a} \dot{\varphi} _{s}^{b}(x) \dot{\varphi} _{s}^{c} (x)  
 \end{align}
@@ -93,11 +165,11 @@ with $Z^{i}$ is an arbitrary vector, it is followed by:
     &+ \frac{1}{2} \int d^{d}x \sqrt{g} \lbrace h_{ab} \nabla_{\mu} \xi^{a} \nabla ^{\mu} \xi ^{b} + R_{acdb} \xi ^{c}\xi^{d} \partial _{\mu}\bar{\varphi}^{a} \partial ^{\mu} \bar{\varphi} ^{b} + \cdots
     \end{split} 
 \end{align}
-Looking at the quadratic part, it lead to an operator:
+Looking at the quadratic part, it gives an operator:
 \begin{align}
     D = -(h_{ab} \square + R_{acbd} \partial _{\mu} \bar{\varphi}^{c} \partial ^{\mu} \bar{\varphi}^{d} )
 \end{align}
-Therefore, for instance in $d=4$ case, the 1-loop effective action is given:
+Therefore, for instance, in the $d=4$ case, the 1-loop effective action is given:
 \begin{align}
     \begin{split}
     \Gamma _{\text{1-loop}} ^{\text{div}} = &-\frac{1}{2} \frac{1}{(4\pi)^2}\lbrace \frac{1}{2}(\Lambda^4 - \mu ^{4}) \int d^{4}x \sqrt{g} + (\Lambda ^{2} - \mu ^{2}) \int d^{4}x \sqrt{g} \Tr R_{acbd} \partial _{\mu} \bar{\varphi}^{c} \partial ^{\mu} \bar{\varphi}^{d} \\ 
@@ -106,24 +178,33 @@ Therefore, for instance in $d=4$ case, the 1-loop effective action is given:
 \end{align}
 Thus, comparing only relevant coefficients:
 \begin{align}
+    \label{eq:R}
     \mu \pdv{\mu} g_{ab} = \frac{\mu ^{2}} {(4\pi)^2} R_{ab}
 \end{align}
 Adding a generic potential term $V$, the operator reads:
 \begin{align}
-    D = -(h_{ab}\square + R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - \text{Hess} (V))
+    D = -(h_{ab}\square + R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - Hess (V))
 \end{align}
 where $\text{Hess}(V)$ is a Hessian matrix of V. Then the divergent part of 1-loop effective action in 4d becomes:
 \begin{align}
     \begin{split}
-    \Gamma_{\text{1-loop}}^{\text{div}} = &-\frac{1}{2} \frac{1}{(4\pi)^{2}}\lbrace (\Lambda ^{2} - \mu ^{2})\int d^{4}x \sqrt{g} \Tr (R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - \text{Hess} (V)) \\ 
-    &+ \ln (\Lambda/\mu)\int d^{4}x \sqrt{g} \Tr(R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - \text{Hess} (V))^{2}
+    \Gamma_{\text{1-loop}}^{\text{div}} = &-\frac{1}{2} \frac{1}{(4\pi)^{2}}\lbrace (\Lambda ^{2} - \mu ^{2})\int d^{4}x \sqrt{g} \Tr (R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - Hess (V)) \\ 
+    &+ \ln (\Lambda/\mu)\int d^{4}x \sqrt{g} \Tr(R_{acbd} \partial_{\mu} \bar{\varphi} ^{a} \partial^{\mu} \bar{\varphi} ^{b} - Hess (V))^{2}
     \end{split}
 \end{align}
 By comparing coefficients with an action at scale $\mu$:
 \begin{align}
     S[\varphi] = \int d^{4}x \sqrt{g} (\frac{1}{2} \tilde h_{ab} \partial _{\mu} \varphi^{a} \partial ^{\mu} \varphi ^{b} + V)
 \end{align}
-flow equations can be obtained as did above.
+flow equations can be obtained as did above, but in this case, it is not as simple as eq.\ref{eq:R} because depending on the forms of the potential there may appear other terms that have contributions. For instance, the logarithmic term in the divergent part of 1-loop contribution to the effective action gives:
+\begin{align}
+    \begin{split}
+        &\text{Tr} (R_{acbd} \partial _{\mu} \bar \varphi^{a} \partial ^{\mu} \bar \varphi ^{b} - Hess (V)) ^{2} \\
+        & = \text{Tr} [(R_{acbd}\partial _{\mu} \bar \varphi^{a} \partial ^{\mu} \bar \varphi ^{b}) ^{2} - 2Hess(V) \partial _{\mu} \bar \varphi^{a} \partial ^{\mu} \bar \varphi ^{b} + (Hess(V))^{2}]
+    \end{split}
+\end{align}
+and so the term $Hess(V) \partial _{\mu} \bar \varphi^{a} \partial ^{\mu} \bar \varphi ^{b}$ also possibly involves the flow of the metric. Of course, since there are supposed to be couplings within the potential term, we may have flows of those couplings which can be extracted from terms including $Hess(V)$ as we vary the scales too. We will see what occurs when we add specific potentials below.
+
 
 \subsection{Generic Mass}
 Suppose that the potential is given in a form of the homogeneous quadratic function of $\varphi_{1}$ and $\varphi _{2}$:
@@ -149,12 +230,12 @@ Therefore, the metric $h_{ab}$ flows as:
 \begin{align}
     \mu \pdv{\mu} h_{ab} = \frac{1}{8\pi^2} (\mu ^{2} R_{ab} - \Tr Hess(V) R_{acbd})
 \end{align}
-Now considering how the metric, and geodesics eventually, would be modified as the scale varies from $\Lambda$ to $\mu$, integrate again both side, it becomes:
+Now considering how the metric, and geodesics eventually, would be modified as the scale varies from $\Lambda$ to $\mu$, integrate again both sides, it becomes:
 \begin{align}
     \label{eq:2.63}
     h_{ab} ^{\mu} - h_{ab} ^{\Lambda} = \frac{1}{8\pi^{2}}\lbrace \frac{1}{2}(\mu ^{2} - \Lambda ^{2}) R_{ab} - \ln \frac{\mu}{\Lambda} \Tr Hess(V) R_{acbd} \rbrace
 \end{align}
-Assume here that the variation of the scale is so small that the curvature on the right hand side can be thought of as the one corresponding to the initial metric at scale $\Lambda$, writing $\mu = \Lambda (1-\epsilon)$ with $\epsilon \ll 1$, eq.\ref{eq:2.63} gives:
+Assume here that the variation of the scale is so small that the curvature on the right-hand side can be thought of as the one corresponding to the initial metric at scale $\Lambda$, writing $\mu = \Lambda (1-\epsilon)$ with $\epsilon \ll 1$, eq.\ref{eq:2.63} gives:
 \begin{align}
     h_{ab} ^{\mu} \approx h_{ab} ^{\Lambda} + \frac{\epsilon}{8\pi ^{2}}  \qty (\Tr Hess(V) R_{acbd} - \Lambda ^{2} R_{ab})
 \end{align}
@@ -167,7 +248,7 @@ For given metric and a form of the potential, each term is:
     \end{bmatrix} \\
     R_{ab} &= -\frac{1}{\varphi_{2} ^{2}} \mathbb{1}
 \end{align}
-the metric at a scale $\mu$ is:
+where $\mathbb{1}$ here is a 2-by-2 square matrix. Then, the metric at a scale $\mu$, up to $\order{\epsilon}$, is:
 \begin{align}
     \tilde h_{ab} := h_{ab} ^{\mu} = 
     \begin{bmatrix}
@@ -184,7 +265,7 @@ and its inverse is:
     \end{bmatrix}
 \end{align}
 
-Now in order to investigate how this geodesic varies as there is a tiny variation on the metric. From perturbed metric, one may find:
+Now in order to investigate how this geodesic varies as scale varies and consequently metric has a different form, we have to start over the procedure. From perturbed metric, we may find:
 \begin{align}
     &\tilde \Gamma_{11}^{1} = -\frac{\epsilon}{8\pi^{2}} \frac{m}{k^2}\varphi_{2} \\
     &\tilde \Gamma _{12} ^{1} = -\frac{1}{\varphi_{2}} -\frac{\epsilon}{8\pi^{2}}\frac{M_2}{k^2}\varphi_{2} \\
@@ -200,7 +281,7 @@ Therefore, the new geodesic equations are:
     \label{eq:2.80}
     \ddot \varphi_{2} +\frac{1}{\varphi_{2}} (\varphi_{1} ^{2} - \varphi_{2}^{2}) &= \frac{\epsilon}{8\pi ^{2}}\frac{\varphi_{2}}{k^{2}}(-M_{1} \dot \varphi_{1}^{2} - 2m \dot \varphi_{1} \dot \varphi_{2} + M_{1} \dot \varphi_{2} ^{2})
 \end{align}
-Notice that $\dot \varphi_{1} = 0$ is no longer a solution of the equations. Then assuming an ansatz such that the solutions for those geodesic equations $(\varphi_{1}, \varphi{2})$ are in the form:
+Notice that $\dot \varphi_{1} = 0$ is no longer a solution of the equations. Then assuming an ansatz such that the solutions for those geodesic equations $(\varphi_{1}, \varphi_{2})$ are in the form:
 \begin{align}[left=\empheqlbrace]
     \varphi_{1} &= \tilde \varphi_{1} + \epsilon f(s) \\
     \varphi_{2} &= \tilde \varphi_{2} + \epsilon g(s) 
@@ -225,7 +306,7 @@ A solution to the homogeneous equation is:
 \begin{align}
     f_{h} (s) = C_{1} + C_{2} e^{2s/\sqrt{k}} 
 \end{align}
-and let $f_{p} = A e^{3s/ \sqrt{k}}$ be the particular solution, then since $\ddot f_{p} (s) = \frac{9}{k} Ae^{3s/\sqrt{k}}$, $\dot f_{p} (s) = \frac{3}{\sqrt{k}}$, $A = -\frac{k}{3} \frac{1}{8\pi^{2}}\frac{m}{k^{3}} (\varphi_{2}^{0})^{3}$. Therefore:
+and let $f_{p} = A e^{3s/ \sqrt{k}}$ be the particular solution, then since $\ddot f_{p} (s) = \frac{9}{k} Ae^{3s/\sqrt{k}}$, $\dot f_{p} (s) = \frac{3}{\sqrt{k}}$, we have $A = -\frac{k}{3} \frac{1}{8\pi^{2}}\frac{m}{k^{3}} (\varphi_{2}^{0})^{3}$. Therefore:
 \begin{align}
     f(s) &= f_{h}(s) + f_{p}(s) \nonumber \\
     &= C_{1} + C_{2} e^{2s/\sqrt{k}} - \frac{k}{3}\frac{1}{8\pi^{2}}\frac{m}{k^{3}}(\varphi_{2}^{0})^{3} e^{3s/\sqrt{k}}
@@ -281,7 +362,15 @@ It can be easily noticed that in the limit $\epsilon \to 0$, $\varphi_{2} \to \t
 \begin{align}
     \dv{\ln M}{s} = \dv{\ln M}{\varphi_{2}}\dv{\varphi_{2}}{s} = -\frac{\lambda}{\sqrt{k}}\abs{\frac{\epsilon}{8\pi^{2}} \frac{M_{1}}{k^{2}}\varphi_{2}^{2}}^{-1/2} \rightarrow 0
 \end{align}
-so the tower mass scale is no longer decaying exponentially with the geodesic distance. This is compatible with SDC if and only if the coefficient of the polynomial term vanishes. In this case, we have a new constraint $M_{1} = 0$. 
+so the tower mass scale is no longer decaying exponentially with the geodesic distance. This is compatible with SDC if and only if the coefficient of the polynomial term in the expression of the geodesic distance vanishes. In this case, we have a new constraint $M_{1} = 0$. Actually, if we set $M_{1} =0$, then:
+\begin{align}
+    \dd s &\sim \frac{\sqrt{k}}{\varphi_{2}} \sqrt{1 + \frac{\epsilon}{8\pi^{2}} \frac{\varphi_{2}^{2}}{k} (\frac{\Lambda}{\varphi_{2}})^{2} }\dd \varphi_{2}
+\end{align}
+and thus:
+\begin{align}
+    \dv{\ln M}{s} = \dv{\ln M}{\varphi_{2}} \dv{\varphi_{2}}{s} \sim -\frac{a}{\sqrt{k}}(1 - \frac{\epsilon}{16\pi^{2}}\frac{\Lambda ^{2}}{k})
+\end{align}
+So now we see that SDC is satisfied with varied decay rate $\frac{a}{\sqrt{k}}(1- \frac{\epsilon}{16\pi^{2}}\frac{\Lambda ^{2}}{k})$.
 
 \subsection{Quartic Coupling}
 Next, let us add a quartic coupling term to the action. Then the potential has a form:
@@ -317,7 +406,7 @@ Then we may have:
     \Gamma_{12}^{2} &= \frac{\epsilon}{8\pi^{2}} \frac{\varphi_{2}}{k^{2}}(m-\lambda\varphi_{1}\varphi_{2}) \\
     \Gamma_{22}^{2} &= -\frac{1}{\varphi_{2}} - \frac{\epsilon}{8\pi^{2}}\frac{\varphi_{2}}{k^{2}}[M_{1} + \lambda (3\varphi_{1}^{2} + 2\varphi_{2}^{2})]
 \end{align}
-With same procedure as before, we can obtain the geodesic equations:
+With the same procedure as before, we can obtain the geodesic equations:
 \begin{align}
     \label{eq:104}
     \begin{split}
@@ -332,11 +421,43 @@ With same procedure as before, we can obtain the geodesic equations:
     & + \lbrace M_{1} + \lambda (3\varphi_{1}^{2} + 2\varphi_{2}^{2}) \rbrace \dot \varphi_{2}^{2}]
     \end{split}
 \end{align}
-Then, eq.\ref{eq:104} gives:
+Then, with ansatz we provided before, eq.\ref{eq:104} gives:
+\begin{align}
+    \begin{split}
+        &(\tilde \varphi_{2} + \epsilon g(s))(\ddot {\tilde {\varphi_{1}}} + \epsilon \ddot f(s)) - 2 (\dot {\tilde{\varphi_{1}}} + \epsilon \dot {f}(s))(\dot {\tilde{\varphi_{2}}} +\epsilon \dot{g}(s))  \\
+        &= \frac{\epsilon}{8\pi^{2}} \frac{(\tilde {\varphi}_{2} + \epsilon g(s))^{2}}{k^{2}} [(m+3\lambda (\tilde {\varphi}_{1}+ \epsilon f(s)) (\tilde {\varphi_{2}}+\epsilon g(s)))(\dot {\tilde {\varphi_{1}}} + \epsilon \dot f(s))^{2} \\
+        &+ 2\lbrace M_{2} + \lambda ((\tilde {\varphi}_{1} +\epsilon f(s))^{2} + 6(\tilde {\varphi}_{2} + \epsilon g(s))^{2}) \rbrace (\dot {\tilde {\varphi_{1}}} + \epsilon \dot f (s))(\dot {\tilde {\varphi_{2}}} + \epsilon \dot g (s)) \\
+        & - (m+ 6\lambda (\tilde {\varphi}_{1} + \epsilon f(s))(\tilde {\varphi}_{2} + \epsilon g(s))) (\dot {\tilde {\varphi_{2}}} + \epsilon  \dot g(s))^{2}]
+    \end{split}
+\end{align}
+Again, knowing $\tilde{\varphi_{1}} = \varphi_{1}^{0}$, up to $\order{\epsilon}$ we may obtain a differential equation for $f(s)$:
 \begin{align}
     \ddot f (s) - \frac{2}{\sqrt{k}} \dot f(s) = -\frac{1}{8\pi^{2}}\frac{1}{k^{3}}(m+6\lambda \tilde{\varphi_{1}} \tilde{\varphi_{2}})\tilde{\varphi_{2}}^{3}
 \end{align}
-where $f(s)$, and $\tilde{\varphi_{i}}$ are same as we did. Solving for $f(s)$, we end up with:
+Solving for $f(s)$, the homogeneous solution is:
+\begin{align}
+    f_{h} (s) = C_{1} + C_{2} e^{s/\sqrt{k}}
+\end{align}
+and particular solutions are:
+\begin{align}
+    f_{p1} (s) &= A e^{3s/\sqrt{k}} \\
+    f_{p2} (s) &= B e^{4s/ \sqrt{k}}  
+\end{align}
+where $A$ and $B$ are constants determined from:
+\begin{align}
+    \ddot f_{p1} (s) -\frac{2}{\sqrt{2}} \dot f_{p1} (s) &= -\frac{1}{8\pi^{2}} \frac{m}{k^{3}} m (\varphi_{2}^{0})^{3} e^{3/\sqrt{k}} \\
+    \ddot f_{p2} (s) - \frac{2}{\sqrt{2}} \dot f_{p2} (s) &= -\frac{1}{8\pi^{2}} \frac{6\lambda}{k^{3}} \tilde{\varphi_{1}^{0}}(\varphi_{2}^{0})^{4} e^{4s/\sqrt{k}}
+\end{align}
+Then, those constants are:
+\begin{align}
+    A & = -\frac{1}{8\pi^{2}} \frac{m}{3k^{2}} (\varphi_{2}^{0})^{3} \\
+    B &= -\frac{1}{8\pi^{2}} \frac{3\lambda}{4k^{2}}\varphi_{1}^{0} (\varphi_{2} ^{0})^{4}
+\end{align}
+and the solution $f(s)$ is:
+\begin{align}
+    f(s) = C_{1} + C_{2} e^{2s/\sqrt{k}} -\frac{1}{8\pi^{2}} \frac{m}{3k^{2}} (\varphi_{2}^{0})^{3} e^{3s/\sqrt{k}}  -\frac{1}{8\pi^{2}} \frac{3\lambda}{4k^{2}}\varphi_{1}^{0} (\varphi_{2} ^{0})^{4} e^{4s/\sqrt{k}}
+\end{align}
+considering the initial values, $f(0) = 0$, and $\dot f(0) = 0$, we may find $C_{1}$ and $C_{2}$, and end up with:
 \begin{align}
     \varphi_{1} = \varphi_{1}^{0} - \frac{\epsilon}{8\pi^{2}} \frac{m}{6k^{2}} (\varphi_{2}^{0})^{3} (1-3e^{\frac{2s}{\sqrt{k}}} + 2e^{\frac{3s}{\sqrt{k}}}) - \frac{\epsilon}{8\pi^{2}}\frac{3\lambda}{4k^{2}}\varphi_{1}^{0} (\varphi_{2}^{0})^{4} (1-2e^{\frac{2s}{\sqrt{k}}} + e^{\frac{4s}{\sqrt{k}}})
 \end{align}
@@ -358,14 +479,23 @@ In order to determine the geodesic distance, we again manipulate first:
 Thus, the distance is given:
 \begin{align}
     \begin{split}
-    s &= \int \sqrt{\tilde{h}_{ab} \dd \varphi_{a} \dd \varphi_{b}} \\
-    & \sim \sqrt{k}\ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{0}}} - \frac{\epsilon}{16\pi^{2}}\frac{1}{\sqrt{k}} [\frac{1}{2k}(M_{1}+3\lambda(\varphi_{1}^{0})^{2})(\varphi_{2}^{2} - (\varphi_{2}^{0})^{2}) + \frac{\lambda}{4k} (\varphi_{2}^{4} - (\varphi_{2}^{0})^{4}) + \Lambda^{2} \ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{0}}}]
+    s &= \int \dd s \\
+    &= \int \sqrt{\tilde{h}_{ab} \dd \varphi_{a} \dd \varphi_{b}} \\
+    &= \int \sqrt{\tilde h_{11} (\dv{\varphi_{1}}{\varphi_{2}})^{2} + 2\tilde h_{12} \dv{\varphi_{1}}{\varphi_{2}} + \tilde h_{22} } \dd \varphi_{2} \\
+    & \sim \sqrt{k}\ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{0}}} \\
+    &- \frac{\epsilon}{16\pi^{2}}\frac{1}{\sqrt{k}} [\frac{1}{2k}(M_{1}+3\lambda(\varphi_{1}^{0})^{2})(\varphi_{2}^{2} - (\varphi_{2}^{0})^{2}) + \frac{\lambda}{4k} (\varphi_{2}^{4} - (\varphi_{2}^{0})^{4}) \\
+    & + \Lambda^{2} \ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{0}}}]
     \end{split}
 \end{align}
-Notice that we have two polynomial terms here. Assuming SDC is always satisfied at different energy scales, we arrive the constraints:
+Now we can see that in this case we have two polynomial terms here, one is due to $M_{1}$ as previous case and the other is $\lambda$. Assuming SDC is still satisfied at varied energy scales, we arrive the constraints:
 \begin{align}
     \lambda = 0, & \qq{} M_{1} = 0
 \end{align}
+With those conditions satisfied, the decay rate is:
+\begin{align}
+    \frac{a}{\sqrt{k}} (1- \frac{\epsilon}{16\pi^{2}} \frac{\Lambda ^{2}}{k})
+\end{align}
+as same as the generic mass case.
 
 \subsection{Exponential Mass}
 Now suppose $M_{1} = A e^{-\alpha \varphi_{1}}$. Then the Hessian is:
@@ -381,7 +511,7 @@ and the perturved metric is:
     \tilde h_{ab} = 
     \begin{bmatrix}
         \frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}}[\frac{M_{2}}{k} - (\frac{\Lambda}{\varphi_{2}})^{2}] & \frac{\epsilon}{8\pi^{2}}\frac{m}{k} \\
-        \frac{\epsilon}{8\pi^{2}}\frac{m}{k} & \frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}} [\frac{Ae^{-\alpha\varphi_{1}}}{k}(\alpha^{2} \varphi_{1}^{2} - 4\alpha\varphi_{1} + 2) - (\frac{\Lambda}{\varphi_{1}})^{2}]
+        \frac{\epsilon}{8\pi^{2}}\frac{m}{k} & \frac{k}{\varphi_{2}^{2}} -\frac{\epsilon}{8\pi^{2}} [\frac{Ae^{-\alpha\varphi_{1}}}{k}(\alpha^{2} \varphi_{1}^{2} - 4\alpha\varphi_{1} + 2) - (\frac{\Lambda}{\varphi_{2}})^{2}]
     \end{bmatrix}
 \end{align}
 Then:
@@ -429,7 +559,8 @@ Then the distance is:
         \sim & \sqrt{k} \ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{0}}} -\frac{\epsilon}{16\pi^{2}}\frac{1}{\sqrt{k}}[ \frac{A}{2k}e^{-\alpha \tilde{\varphi_{1}}}(\alpha^{2}\tilde{\varphi_{1}}^{2} - 4\alpha\tilde{\varphi_{1}}+2) (\varphi_{2}^{2} - (\varphi_{2}^{0})^{2}) -\Lambda^{2} \ln \abs{\frac{\varphi_{2}}{\varphi_{2}^{0}}} ]
     \end{split}
 \end{align}
+Here for an infinitesimal variation, we adopted $e^{-\alpha \varphi_{1}} = e^{-\alpha(\tilde{\varphi_{1}} + \epsilon f(s))} \sim e^{-\alpha\tilde{\varphi_{1}}} (1 - \epsilon \alpha f(s))$.
 Therefore, the non-trivial constraint which makes the theory satisfy SDC is:
 \begin{align}
-    \alpha = \frac{2\pm \sqrt{2}}{\tilde{\varphi_{1}}}
+    \alpha = \frac{2\pm \sqrt{2}}{\varphi_{1}^{0}}
 \end{align}
